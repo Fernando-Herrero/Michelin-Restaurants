@@ -7,6 +7,7 @@ const restaurants = [
 		precio: 200,
 		url: "https://www.abacrestaurant.com/",
 		estrellas: 3, 
+        imgage: "/media/abac-restaurant.jpg",
 	},
 	{
 		id: 2,
@@ -16,6 +17,7 @@ const restaurants = [
 		precio: 220,
 		url: "https://www.akelarre.net/",
 		estrellas: 3,
+        imgage: "/media/akelare-restaurant.jpg",
 	},
 	{
 		id: 3,
@@ -25,6 +27,7 @@ const restaurants = [
 		precio: 180,
 		url: "https://www.restaurantamelia.com/",
 		estrellas: 2,
+        imgage: "/media/amelia-by-paulo-restaurant.jpg",
 	},
 	{
 		id: 4,
@@ -34,6 +37,7 @@ const restaurants = [
 		precio: 215,
 		url: "https://www.aponiente.com/",
 		estrellas: 3,
+        imgage: "/media/aponiente-restaurant.webp",
 	},
 	{
 		id: 5,
@@ -43,6 +47,7 @@ const restaurants = [
 		precio: 210,
 		url: "https://www.arzak.es/",
 		estrellas: 3,
+        imgage: "/media/arzak-restaurant.jpg",
 	},
 	{
 		id: 6,
@@ -52,6 +57,7 @@ const restaurants = [
 		precio: 190,
 		url: "https://www.restauranteatrio.com/",
 		estrellas: 3,
+        imgage: "/media/atrio-restaurant.avif",
 	},
 	{
 		id: 7,
@@ -61,6 +67,7 @@ const restaurants = [
 		precio: 220,
 		url: "https://www.azurmendi.restaurant/",
 		estrellas: 3,
+        imgage: "/media/azurmendi-restaurant.jpg",
 	},
 	{
 		id: 8,
@@ -70,6 +77,7 @@ const restaurants = [
 		precio: 165,
 		url: "https://www.bardalrestaurant.com/",
 		estrellas: 2,
+        imgage: "/media/bordal-restaurant.jpg",
 	},
 	{
 		id: 9,
@@ -79,6 +87,7 @@ const restaurants = [
 		precio: 150,
 		url: "https://www.bonamb.com/",
 		estrellas: 2,
+        imgage: "/media/bonamb-restaurant.jpg",
 	},
 	{
 		id: 10,
@@ -88,6 +97,7 @@ const restaurants = [
 		precio: 130,
 		url: "https://www.cabanyabuenavista.com/",
 		estrellas: 2,
+        imgage: "/media/cabana-buenavista-restaurant.jpg",
 	},
 	{
 		id: 11,
@@ -97,6 +107,7 @@ const restaurants = [
 		precio: 180,
 		url: "https://www.casamarcial.com/",
 		estrellas: 3,
+        imgage: "/media/casa-marcial-restaurant.jpg",
 	},
 	{
 		id: 12,
@@ -106,6 +117,7 @@ const restaurants = [
 		precio: 195,
 		url: "https://www.cenadordeamos.com/",
 		estrellas: 3,
+        imgage: "/media/cenador-de-amos-restaurant.jpg",
 	},
 	{
 		id: 13,
@@ -115,6 +127,7 @@ const restaurants = [
 		precio: 150,
 		url: "https://www.cincsentits.com/",
 		estrellas: 2,
+        imgage: "/media/cinc-sentitis-restaurant.jpg",
 	},
 	{
 		id: 14,
@@ -124,6 +137,7 @@ const restaurants = [
 		precio: 195,
 		url: "https://www.coque.com/",
 		estrellas: 2,
+        imgage: "/media/coque-restaurant.jpg",
 	},
 	{
 		id: 15,
@@ -133,6 +147,7 @@ const restaurants = [
 		precio: 175,
 		url: "https://www.dstageconcept.com/",
 		estrellas: 2,
+        imgage: "/media/dstage-restaurant.webp",
 	},
 	{
 		id: 16,
@@ -142,6 +157,7 @@ const restaurants = [
 		precio: 190,
 		url: "https://www.disfrutarbarcelona.com/",
 		estrellas: 3,
+        imgage: "/media/disfrutar-restaurant.jpg",
 	},
 	{
 		id: 17,
@@ -151,6 +167,7 @@ const restaurants = [
 		precio: 250,
 		url: "https://www.diverxo.com/",
 		estrellas: 3,
+        imgage: "/media/diverxo-restaurant.webp",
 	},
 	{
 		id: 18,
@@ -160,6 +177,7 @@ const restaurants = [
 		precio: 210,
 		url: "https://www.cellercanroca.com/",
 		estrellas: 3,
+        imgage: "/media/celler-de-can-roca-restaurant.jpg",
 	},
 	{
 		id: 19,
@@ -169,6 +187,7 @@ const restaurants = [
 		precio: 160,
 		url: "https://www.echaurren.com/",
 		estrellas: 2,
+        imgage: "/media/portal-de-echaurren-restaurant.jpg",
 	},
 	{
 		id: 20,
@@ -178,6 +197,7 @@ const restaurants = [
 		precio: 180,
 		url: "https://www.enotecapacoperez.com/",
 		estrellas: 2,
+        imgage: "/media/enoteca-restaurant.jpg",
 	},
 	{
 		id: 21,
@@ -187,6 +207,7 @@ const restaurants = [
 		precio: 140,
 		url: "https://www.lescaleta.com/",
 		estrellas: 2,
+        imgage: "/media/lescaleta-restaurant.jpeg",
 	},
 	{
 		id: 22,
@@ -196,6 +217,7 @@ const restaurants = [
 		precio: 230,
 		url: "https://www.restaurantlasarte.com/",
 		estrellas: 3,
+        imgage: "/media/lasarte-restaurant.jpg",
 	},
 	{
 		id: 23,
@@ -205,6 +227,7 @@ const restaurants = [
 		precio: 120,
 		url: "https://www.maralbarestaurante.com/",
 		estrellas: 2,
+        imgage: "/media/maralba-restaurant.jpg",
 	},
 	{
 		id: 24,
@@ -214,6 +237,7 @@ const restaurants = [
 		precio: 250,
 		url: "https://www.martinberasategui.com/",
 		estrellas: 3,
+        imgage: "/media/martin-berasategui-restaurant.jpg",
 	},
 	{
 		id: 25,
@@ -223,6 +247,7 @@ const restaurants = [
 		precio: 220,
 		url: "https://www.mugaritz.com/",
 		estrellas: 2,
+        imgage: "/media/mugaritz-restaurant.webp",
 	},
 	{
 		id: 26,
@@ -232,6 +257,7 @@ const restaurants = [
 		precio: 185,
 		url: "https://www.noorrestaurant.es/",
 		estrellas: 3,
+        imgage: "/media/noor-restaurant.jpg",
 	},
 	{
 		id: 27,
@@ -241,6 +267,7 @@ const restaurants = [
 		precio: 180,
 		url: "https://www.pacoroncero.com/",
 		estrellas: 2,
+        imgage: "/media/paco-roncero-restaurant.jpg",
 	},
 	{
 		id: 28,
@@ -250,6 +277,7 @@ const restaurants = [
 		precio: 210,
 		url: "https://www.quiquedacosta.com/",
 		estrellas: 3,
+        imgage: "/media/quique-dacosta-restaurant.jpg",
 	},
 	{
 		id: 29,
@@ -259,6 +287,7 @@ const restaurants = [
 		precio: 185,
 		url: "https://www.ramonfreixa.com/",
 		estrellas: 2,
+        imgage: "/media/ramon-freixa-restaurant.jpg",
 	},
 	{
 		id: 30,
@@ -268,6 +297,7 @@ const restaurants = [
 		precio: 175,
 		url: "https://www.ricardcamarena.com/",
 		estrellas: 2,
+        imgage: "/media/ricard-camarena-restaurant.jpg",
 	},
 	{
 		id: 31,
@@ -277,6 +307,7 @@ const restaurants = [
 		precio: 180,
 		url: "https://www.restauranteskina.com/",
 		estrellas: 2,
+        imgage: "/media/skina-restaurant.jpg",
 	},
 	{
 		id: 32,
@@ -286,6 +317,7 @@ const restaurants = [
 		precio: 200,
 		url: "https://www.smokedroom.es/",
 		estrellas: 2,
+        imgage: "/media/smoked-room-restaurant.jpg",
 	},
 	{
 		id: 33,
@@ -295,6 +327,7 @@ const restaurants = [
 		precio: 160,
 		url: "https://www.vororestaurant.com/",
 		estrellas: 2,
+        imgage: "/media/voro-restaurant.jpg",
 	},
 ];
 
