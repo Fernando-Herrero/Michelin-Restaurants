@@ -4,9 +4,9 @@ const restaurants = [
 		nombre: "ABaC",
 		localidad: "Barcelona",
 		cocina: "Innovadora",
-		precio: 200, // precio como número
+		precio: 200,
 		url: "https://www.abacrestaurant.com/",
-		estrellas: 3, // estrellas como número
+		estrellas: 3, 
 	},
 	{
 		id: 2,
@@ -297,3 +297,4 @@ const restaurants = [
 		estrellas: 2,
 	},
 ];
+
