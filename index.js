@@ -407,15 +407,15 @@ const createRestaurantInfo = (restaurant) => {
 	divInfo.appendChild(titleCard);
 
 	const localityCard = document.createElement("p");
-	localityCard.textContent = restaurant.localidad;
+	localityCard.textContent = `Localidad: ${restaurant.localidad}`;
 	divInfo.appendChild(localityCard);
 
 	const cousineCard = document.createElement("p");
-	cousineCard.textContent = restaurant.cocina;
+	cousineCard.textContent = `Cocina: ${restaurant.cocina}`;
 	divInfo.appendChild(cousineCard);
 
 	const priceCard = document.createElement("p");
-	priceCard.textContent = restaurant.precio;
+	priceCard.textContent = `Precio ${restaurant.precio}`;
 	divInfo.appendChild(priceCard);
 
 	const containerButton = createContainerButton(restaurant);
