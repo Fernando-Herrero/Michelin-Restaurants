@@ -8,6 +8,7 @@ const restaurants = [
 		url: "https://www.abacrestaurant.com/",
 		estrellas: 3,
 		imagen: "/media/abac-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 2,
@@ -18,6 +19,7 @@ const restaurants = [
 		url: "https://www.akelarre.net/",
 		estrellas: 3,
 		imagen: "/media/akelare-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 3,
@@ -28,6 +30,7 @@ const restaurants = [
 		url: "https://www.restaurantamelia.com/",
 		estrellas: 2,
 		imagen: "/media/amelia-by-paulo-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 4,
@@ -38,6 +41,7 @@ const restaurants = [
 		url: "https://www.aponiente.com/",
 		estrellas: 3,
 		imagen: "/media/aponiente-restaurant.webp",
+		favorito: false,
 	},
 	{
 		id: 5,
@@ -48,6 +52,7 @@ const restaurants = [
 		url: "https://www.arzak.es/",
 		estrellas: 3,
 		imagen: "/media/arzak-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 6,
@@ -58,6 +63,7 @@ const restaurants = [
 		url: "https://www.restauranteatrio.com/",
 		estrellas: 3,
 		imagen: "/media/atrio-restaurant.avif",
+		favorito: false,
 	},
 	{
 		id: 7,
@@ -68,6 +74,7 @@ const restaurants = [
 		url: "https://www.azurmendi.restaurant/",
 		estrellas: 3,
 		imagen: "/media/azurmendi-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 8,
@@ -78,6 +85,7 @@ const restaurants = [
 		url: "https://www.bardalrestaurant.com/",
 		estrellas: 2,
 		imagen: "/media/bordal-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 9,
@@ -88,6 +96,7 @@ const restaurants = [
 		url: "https://www.bonamb.com/",
 		estrellas: 2,
 		imagen: "/media/bonamb-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 10,
@@ -98,6 +107,7 @@ const restaurants = [
 		url: "https://www.cabanyabuenavista.com/",
 		estrellas: 2,
 		imagen: "/media/cabana-buenavista-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 11,
@@ -108,6 +118,7 @@ const restaurants = [
 		url: "https://www.casamarcial.com/",
 		estrellas: 3,
 		imagen: "/media/casa-marcial-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 12,
@@ -118,6 +129,7 @@ const restaurants = [
 		url: "https://www.cenadordeamos.com/",
 		estrellas: 3,
 		imagen: "/media/cenador-de-amos-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 13,
@@ -128,6 +140,7 @@ const restaurants = [
 		url: "https://www.cincsentits.com/",
 		estrellas: 2,
 		imagen: "/media/cinc-sentitis-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 14,
@@ -138,6 +151,7 @@ const restaurants = [
 		url: "https://www.coque.com/",
 		estrellas: 2,
 		imagen: "/media/coque-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 15,
@@ -148,6 +162,7 @@ const restaurants = [
 		url: "https://www.dstageconcept.com/",
 		estrellas: 2,
 		imagen: "/media/dstage-restaurant.webp",
+		favorito: false,
 	},
 	{
 		id: 16,
@@ -158,6 +173,7 @@ const restaurants = [
 		url: "https://www.disfrutarbarcelona.com/",
 		estrellas: 3,
 		imagen: "/media/disfrutar-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 17,
@@ -168,6 +184,7 @@ const restaurants = [
 		url: "https://www.diverxo.com/",
 		estrellas: 3,
 		imagen: "/media/diverxo-restaurant.webp",
+		favorito: false,
 	},
 	{
 		id: 18,
@@ -178,6 +195,7 @@ const restaurants = [
 		url: "https://www.cellercanroca.com/",
 		estrellas: 3,
 		imagen: "/media/celler-de-can-roca-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 19,
@@ -188,6 +206,7 @@ const restaurants = [
 		url: "https://www.echaurren.com/",
 		estrellas: 2,
 		imagen: "/media/portal-de-echaurren-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 20,
@@ -198,6 +217,7 @@ const restaurants = [
 		url: "https://www.enotecapacoperez.com/",
 		estrellas: 2,
 		imagen: "/media/enoteca-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 21,
@@ -208,6 +228,7 @@ const restaurants = [
 		url: "https://www.lescaleta.com/",
 		estrellas: 2,
 		imagen: "/media/lescaleta-restaurant.jpeg",
+		favorito: false,
 	},
 	{
 		id: 22,
@@ -218,6 +239,7 @@ const restaurants = [
 		url: "https://www.restaurantlasarte.com/",
 		estrellas: 3,
 		imagen: "/media/lasarte-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 23,
@@ -228,6 +250,7 @@ const restaurants = [
 		url: "https://www.maralbarestaurante.com/",
 		estrellas: 2,
 		imagen: "/media/maralba-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 24,
@@ -238,6 +261,7 @@ const restaurants = [
 		url: "https://www.martinberasategui.com/",
 		estrellas: 3,
 		imagen: "/media/martin-berasategui-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 25,
@@ -248,6 +272,7 @@ const restaurants = [
 		url: "https://www.mugaritz.com/",
 		estrellas: 2,
 		imagen: "/media/mugaritz-restaurant.webp",
+		favorito: false,
 	},
 	{
 		id: 26,
@@ -258,6 +283,7 @@ const restaurants = [
 		url: "https://www.noorrestaurant.es/",
 		estrellas: 3,
 		imagen: "/media/noor-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 27,
@@ -268,6 +294,7 @@ const restaurants = [
 		url: "https://www.pacoroncero.com/",
 		estrellas: 2,
 		imagen: "/media/paco-roncero-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 28,
@@ -278,6 +305,7 @@ const restaurants = [
 		url: "https://www.quiquedacosta.com/",
 		estrellas: 3,
 		imagen: "/media/quique-dacosta-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 29,
@@ -288,6 +316,7 @@ const restaurants = [
 		url: "https://www.ramonfreixa.com/",
 		estrellas: 2,
 		imagen: "/media/ramon-freixa-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 30,
@@ -298,6 +327,7 @@ const restaurants = [
 		url: "https://www.ricardcamarena.com/",
 		estrellas: 2,
 		imagen: "/media/ricard-camarena-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 31,
@@ -308,6 +338,7 @@ const restaurants = [
 		url: "https://www.restauranteskina.com/",
 		estrellas: 2,
 		imagen: "/media/skina-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 32,
@@ -318,6 +349,7 @@ const restaurants = [
 		url: "https://www.smokedroom.es/",
 		estrellas: 2,
 		imagen: "/media/smoked-room-restaurant.jpg",
+		favorito: false,
 	},
 	{
 		id: 33,
@@ -328,22 +360,37 @@ const restaurants = [
 		url: "https://www.vororestaurant.com/",
 		estrellas: 2,
 		imagen: "/media/voro-restaurant.jpg",
+		favorito: false,
 	},
 ];
 //he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
 
 //funcion para crear el botn que redireccione a la pagina web
-const createContainerButton = (link) => {
+const createContainerButton = (restaurant) => {
 	const container = document.createElement("div");
 	container.classList.add("container-button");
 
+	const favoriteButton = document.createElement("button");
+	favoriteButton.classList.add("favorite-btn");
+	favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+
+	favoriteButton.addEventListener("click", () => {
+		restaurant.favorito = !restaurant.favorito;
+
+		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+
+		// favoriteButton.classList.toggle("favorito-activo", restaurant.favorito);
+
+		recalcularFavoritos();
+	});
+
 	const aLinkWebsite = document.createElement("a");
 	aLinkWebsite.classList.add("website-button");
-	aLinkWebsite.href = link;
+	aLinkWebsite.href = restaurant.url;
 	aLinkWebsite.target = "_blank";
 	aLinkWebsite.rel = "noopener noreferrer";
 	aLinkWebsite.textContent = "Ver mas";
-	container.append(aLinkWebsite);
+	container.append(favoriteButton, aLinkWebsite);
 
 	return container;
 };
@@ -371,7 +418,7 @@ const createRestaurantInfo = (restaurant) => {
 	priceCard.textContent = restaurant.precio;
 	divInfo.appendChild(priceCard);
 
-	const containerButton = createContainerButton(restaurant.url);
+	const containerButton = createContainerButton(restaurant);
 
 	cardInfo.appendChild(divInfo);
 	cardInfo.appendChild(containerButton);
@@ -404,12 +451,12 @@ const createRestaurantCard = (restaurant) => {
 };
 
 //funcion para filtar los restaurantes
-const displayFilteredRestaurants = (filteredRestaurats) => {
+const displayFilteredRestaurants = (filteredRestaurants) => {
 	const containerFilters = document.querySelector(".container-filters");
 	containerFilters.innerHTML = "";
 
 	//crear  tarjetas de los restaurantes filtrados
-	filteredRestaurats.forEach((restaurant) => {
+	filteredRestaurants.forEach((restaurant) => {
 		const restaurantCard = createRestaurantCard(restaurant);
 		containerFilters.appendChild(restaurantCard);
 	});
@@ -489,5 +536,27 @@ document.getElementById("price").addEventListener("click", () => {
 		console.log("Introduzca precios válidos");
 	}
 });
+//boton favoritos para intentar que los restaurantes con favorito al pulsarlo aparezcan en el div. no conseguido
+const favoriteButton = () => {
+	const favoriteRestaurants = restaurants.filter(
+		restaurant => restaurant.favorito
+	);
+	displayFilteredRestaurants(favoriteRestaurants);
+};
+
+document.getElementById('favorite-button').addEventListener("click", () => {
+    favoriteButton();
+});
+
+
+//intentando crear la funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
+const recalcularFavoritos = () => {
+	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
+
+	const favoriteButton = document.getElementById("favorite-button");
+	if (favoriteButton) {
+		favoriteButton.textContent = `Favoritos: ${saveFavorites.length}`;
+	}
+};
 
 displayFilteredRestaurants();
