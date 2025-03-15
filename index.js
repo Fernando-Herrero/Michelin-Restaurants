@@ -536,7 +536,7 @@ document.getElementById("price").addEventListener("click", () => {
 		console.log("Introduzca precios válidos");
 	}
 });
-//boton favoritos para intentar que los restaurantes con favorito al pulsarlo aparezcan en el div. no conseguido
+//boton favoritos para intentar que los restaurantes con favorito al pulsarlo aparezcan en el div. conseguido
 const favoriteButton = () => {
 	const favoriteRestaurants = restaurants.filter(
 		restaurant => restaurant.favorito
@@ -549,7 +549,7 @@ document.getElementById('favorite-button').addEventListener("click", () => {
 });
 
 
-//intentando crear la funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
+//funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
 const recalcularFavoritos = () => {
 	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
 
