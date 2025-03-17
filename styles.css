@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-family: Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* A partir de aquí introduce tus estilos */
+:root {
+	--accent-bg-color: #f4ede4;
+	--title-color: #000;
+	--contrast-color: #fff;
+	--text-color: #1d1d1d;
+	--text-light-color: #696969;
+	--text-secondary-color: #1264a3;
+	--primary-color: #400d40;
+	--primary-color-dark: #4a154b;
+
+	--container-width: 95%;
+}
+
+body {
+	background-color: var(--bg-color);
+}
+
+.container {
+	width: var(--container-width);
+	margin: 0 auto;
+}
+
+/*he creado algunos estilos solo para que no me saliesen enormes las tarjetas */
+.main-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.container-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-restaurant {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-restauant img {
+	flex: 1;
+	max-width: 150px;
+}
