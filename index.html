@@ -5,24 +5,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- <link rel="shortcut icon" href="#" type="#" /> //añado favicon// -->
 		<script src="index.js" defer></script>
-        <link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+		/>
 		<title>Michelin Restaurants</title>
 	</head>
 
 	<body>
 		<header class="header">
 			<nav class="nav-bar-container container">
-                <div class="nav-logo">
-                    <img src="/media/logo-estrellas-michelin.jpeg" alt="Logotipo de estrellas Michelin">
-                </div>
+				<div class="nav-logo">
+					<img
+						src="/media/logo-estrellas-michelin.jpeg"
+						alt="Logotipo de estrellas Michelin"
+					/>
+				</div>
 				<div class="search-bar">
 					<input type="text" id="search" placeholder="Search restaurants" />
-                    <button class="nav-search-btn">Buscar</button>
-                </div>
-                <div class="nav-buttons">
+					<button class="nav-search-btn">Buscar</button>
+				</div>
+				<div class="nav-buttons">
 					<button id="btn-search">Search</button>
 					<button id="btn-contact">Contact</button>
-                </div>
+				</div>
 			</nav>
 			<section class="filters-container container">
 				<div class="btn-filters">
@@ -37,30 +44,36 @@
 		</header>
 
 		<main class="main-container container">
-            <h1>Estrella Michelin 2025</h1>
+			<h1>Estrella Michelin 2025</h1>
 			<section class="restaurants-container">
 				<div class="img-title-restaurants">
-                    <img src="/media/dos-estrellas-michelin.jpg" alt="logo dos estrellas Michelin">
+					<img
+						src="/media/dos-estrellas-michelin.jpg"
+						alt="logo dos estrellas Michelin"
+					/>
 					<h2>Restaurants</h2>
 				</div>
-                <div class="link-plus-restaurants">
-                    <a href="#">See more</a>
-                </div>
+				<div class="link-plus-restaurants">
+					<a href="#">See more</a>
+				</div>
 			</section>
 
-            <div class="restaurants-two-stars"></div>
+			<div class="restaurants-two-stars"></div>
 
 			<section class="restaurants-container">
 				<div class="img-title-restaurants">
-                    <img src="/media/tres-estrellas-michelin.jpg" alt="logo tres estrellas Michelin">
+					<img
+						src="/media/tres-estrellas-michelin.jpg"
+						alt="logo tres estrellas Michelin"
+					/>
 					<h2>Restaurants</h2>
 				</div>
-                <div class="link-plus-restaurants">
-                    <a href="#">See more</a>
-                </div>
+				<div class="link-plus-restaurants">
+					<a href="#">See more</a>
+				</div>
 			</section>
 
-            <div class="restaurants-three-stars"></div>
+			<div class="restaurants-three-stars"></div>
 
 			<section id="form-container">
 				<div class="form"></div>
@@ -71,7 +84,9 @@
 
 		<footer class="footer container">
 			<h4>Estrella Michelin @2025</h4>
-			<button id="btn-dark">Dark mode</button>
+			<button class="dark-mode-btn">
+				<i class="fa-regular fa-sun" style="color: #ffd43b"></i>
+			</button>
 		</footer>
 	</body>
 </html>

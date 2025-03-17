@@ -113,6 +113,7 @@ body {
 }
 
 .link-plus-restaurants {
+    font-size: 14px;
     text-decoration: underline;
 }
 
@@ -131,4 +132,13 @@ body {
 .card-restauant img {
 	flex: 1;
 	max-width: 150px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dark-mode-btn {
+    font-size: larger;
 }
