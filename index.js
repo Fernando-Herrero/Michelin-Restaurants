@@ -297,3 +297,5 @@ const restaurants = [
 		estrellas: 2,
 	},
 ];
+
+
