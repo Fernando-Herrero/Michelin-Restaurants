@@ -1,89 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="shortcut icon" href="#" type="#" /> //añado favicon// -->
+		<script src="index.js" defer></script>
+        <link rel="stylesheet" href="styles.css" />
+		<title>Michelin Restaurants</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="shortcut icon" href="#" type="#" /> //añado favicon// -->
-    <script src="index.js" defer></script>
-    <title>Michelin Restaurants</title>
-</head>
+	<body>
+		<header class="header">
+			<nav class="nav-bar-container container">
+                <div class="nav-logo">
+                    <img src="/media/logo-estrellas-michelin.jpeg" alt="Logotipo de estrellas Michelin">
+                </div>
+				<div class="search-bar">
+					<input type="text" id="search" placeholder="Search restaurants" />
+                    <button class="nav-search-btn">Buscar</button>
+                </div>
+                <div class="nav-buttons">
+					<button id="btn-search">Search</button>
+					<button id="btn-contact">Contact</button>
+                </div>
+			</nav>
+			<section class="filters-container container">
+				<div class="btn-filters">
+					<button id="two-stars">Two stars</button>
+					<button id="three-stars">Three stars</button>
+					<button id="locality">Locality</button>
+					<button id="cousine">Cousine</button>
+					<button id="price">Price</button>
+				</div>
+				<div class="container-cards"></div>
+			</section>
+		</header>
 
-<body>
-    <nav class="nav-bar-container">
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search restaurants">
-            <button id="btn-search">Search</button>
-            <button id="btn-contact">Contact</button>
-        </div>
-    </nav>
-
-    <header id="header">
-    </header>
-    
-    <main class="main-container">
-        <section id="filters-container">
-            <div class="btn-filters">
-                <button id=""two-stars>Two stars</button>
-                <button id="three-stars">Three stars</button>
-                <button id="locality">Locality</button>
-                <button id="cousine">Cousine</button>
-                <button id="price">Price</button>
-            </div>
-        </section>
-
-        <section id="twoStars-container">
-            <div class="main-bar-two-stars">
-                <h1>Restaurants</h1>
-                <div class="linkTwoStars">
+		<main class="main-container container">
+            <h1>Estrella Michelin 2025</h1>
+			<section class="restaurants-container">
+				<div class="img-title-restaurants">
+                    <img src="/media/dos-estrellas-michelin.jpg" alt="logo dos estrellas Michelin">
+					<h2>Restaurants</h2>
+				</div>
+                <div class="link-plus-restaurants">
                     <a href="#">See more</a>
                 </div>
-            </div>
+			</section>
 
-            <div class="description-restaurants-two-stars">
-                <div class="restaurant-information">
-                    <img src="#" alt="#">
-                    <h2>Name restaurant</h2>
-                </div>
-            </div>
-        </section>
+            <div class="restaurants-two-stars"></div>
 
-        <section id="threeStars-container">
-            <div class="main-bar-three-stars">
-                <h1>Restaurants</h1>
-                <div class="linkThreeStars">
+			<section class="restaurants-container">
+				<div class="img-title-restaurants">
+                    <img src="/media/tres-estrellas-michelin.jpg" alt="logo tres estrellas Michelin">
+					<h2>Restaurants</h2>
+				</div>
+                <div class="link-plus-restaurants">
                     <a href="#">See more</a>
                 </div>
-            </div>
+			</section>
 
-            <div class="description-restaurants-three-stars">
-                <div class="restaurant-information">
-                    <img src="#" alt="#">
-                    <h2>Name restaurant</h2>
-                </div>
-            </div>
-        </section>
+            <div class="restaurants-three-stars"></div>
 
-        <section id="form-container">
-            <div class="form">
+			<section id="form-container">
+				<div class="form"></div>
+			</section>
 
-            </div>
-        </section>
+			<section id="oneStar-container"></section>
+		</main>
 
-
-        <section id="oneStar-container">
-        </section>
-
-
-        <footer id="footer">
-            <h1>EstrellaMichelin@2025</h1>
-            <button id="btn-dark">Dark mode</button>
-        </footer>
-
-
-
-    </main>
-
-</body>
-
+		<footer class="footer container">
+			<h4>Estrella Michelin @2025</h4>
+			<button id="btn-dark">Dark mode</button>
+		</footer>
+	</body>
 </html>

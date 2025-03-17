@@ -415,7 +415,7 @@ const createRestaurantInfo = (restaurant) => {
 	divInfo.appendChild(cousineCard);
 
 	const priceCard = document.createElement("p");
-	priceCard.textContent = `Precio ${restaurant.precio}`;
+	priceCard.textContent = `Precio: ${restaurant.precio}`;
 	divInfo.appendChild(priceCard);
 
 	const containerButton = createContainerButton(restaurant);
@@ -452,7 +452,7 @@ const createRestaurantCard = (restaurant) => {
 
 //funcion para filtar los restaurantes
 const displayFilteredRestaurants = (filteredRestaurants) => {
-	const containerFilters = document.querySelector(".container-filters");
+	const containerFilters = document.querySelector(".container-cards");
 	containerFilters.innerHTML = "";
 
 	//crear  tarjetas de los restaurantes filtrados

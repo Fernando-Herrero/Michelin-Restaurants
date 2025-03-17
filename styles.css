@@ -60,14 +60,63 @@ body {
 	width: var(--container-width);
 	margin: 0 auto;
 }
+/* header and navbar */
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nav-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    max-width: 100px;
+}
+
+.nav-logo img {
+    max-width: 100%;
+}
+
+.btn-filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
 
 /*he creado algunos estilos solo para que no me saliesen enormes las tarjetas */
 .main-container {
 	display: flex;
 	flex-direction: column;
+    gap: 20px;
 }
 
-.container-filters {
+.restaurants-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-title-restaurants {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.img-title-restaurants img {
+    width: 80px;
+    border-radius: 100px;
+}
+
+.link-plus-restaurants {
+    text-decoration: underline;
+}
+
+.container-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 20px;
