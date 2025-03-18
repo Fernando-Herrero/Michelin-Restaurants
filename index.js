@@ -451,10 +451,14 @@ const createRestaurantCard = (restaurant) => {
 };
 
 //funcion para filtar los restaurantes
-const displayFilteredRestaurants = (filteredRestaurants) => {
+const displayFilteredRestaurants = (filteredRestaurants = restaurants) => {
+	// if (!filteredRestaurants?.length) {
+	//     filteredRestaurants = restaurants;
+	// }
+
 	const containerFilters = document.querySelector(".container-cards");
 	containerFilters.innerHTML = "";
-
+	console.log("filtros restaurantes", filteredRestaurants);
 	//crear  tarjetas de los restaurantes filtrados
 	filteredRestaurants.forEach((restaurant) => {
 		const restaurantCard = createRestaurantCard(restaurant);
@@ -472,10 +476,14 @@ const fileterByStars = (stars) => {
 
 //por localidad
 const filterByLocality = (locality) => {
-	const filteredRestaurats = restaurants.filter(
-		(restaurant) =>
-			restaurant.localidad.toLowerCase() === locality.toLowerCase()
+	const parsedLocality = locality.toLowerCase().trim();
+	const filteredRestaurats = restaurants.filter((restaurant) =>
+		restaurant.localidad.toLowerCase().includes(parsedLocality)
 	);
+	// const filteredRestaurats = restaurants.filter(
+	// 	(restaurant) =>
+	// 		restaurant.localidad.toLowerCase() === locality.toLowerCase()
+	// );
 	displayFilteredRestaurants(filteredRestaurats);
 };
 
@@ -503,15 +511,25 @@ document
 document
 	.getElementById("three-stars")
 	.addEventListener("click", () => fileterByStars(3));
-document.getElementById("locality").addEventListener("click", () => {
-	const locality = prompt("Introduce la localidad que estas buscando:");
-	if (locality) {
-		filterByLocality(locality);
-	} else {
-		console.log(
-			"La localidad ingresada no tiene restaurantes estrella Michelin"
-		);
+const selectLocality = document.getElementById("locality-selector");
+
+const localityRestaurants = restaurants.reduce((acc, { localidad }) => {
+	if (!acc.includes(localidad)) {
+		acc.push(localidad);
 	}
+	return acc;
+}, []);
+
+selectLocality.addEventListener("change", (event) => {
+	filterByLocality(event.target.value);
+});
+
+localityRestaurants.forEach((restaurant) => {
+	const optionSelect = document.createElement("option");
+	optionSelect.textContent = restaurant;
+	optionSelect.value = restaurant.toLowerCase();
+
+	selectLocality.append(optionSelect);
 });
 document.getElementById("cousine").addEventListener("click", () => {
 	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
@@ -539,15 +557,14 @@ document.getElementById("price").addEventListener("click", () => {
 //boton favoritos para intentar que los restaurantes con favorito al pulsarlo aparezcan en el div. conseguido
 const favoriteButton = () => {
 	const favoriteRestaurants = restaurants.filter(
-		restaurant => restaurant.favorito
+		(restaurant) => restaurant.favorito
 	);
 	displayFilteredRestaurants(favoriteRestaurants);
 };
 
-document.getElementById('favorite-button').addEventListener("click", () => {
-    favoriteButton();
-});
-
+// document.getElementById("favorite-button").addEventListener("click", () => {
+// 	favoriteButton();
+// });
 
 //funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
 const recalcularFavoritos = () => {
