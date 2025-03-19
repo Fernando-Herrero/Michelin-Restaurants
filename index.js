@@ -365,23 +365,47 @@ const restaurants = [
 ];
 
 //funcion para crear la barra de búsqueda del inicio
-const createSearchBar = (restaurants) => {
-	const btnSearch = document.getElementById("nav-search-btn");
-	const inputSearch = document.getElementById("search");
-	
-	
-	btnSearch.addEventListener("click", () => {
-		const search = inputSearch.value.toLowercase().trim();
-		if (search) {
-			const searchRestaurants = restaurants.filter(restaurant => {
-				return restaurant.nombre.toLowerCase().includes(search) ||
-				restaurant.localidad.toLowerCase().includes(search) ||
-				restaurant.cocina.toLowerCase().includes(search);
-			});
+// const createSearchBar = (restaurants) => {
+// 	const btnSearch = document.getElementById("nav-search-btn");
+// 	const inputSearch = document.getElementById("search");
 
-			displayFilteredRestaurants(searchRestaurants);
-		};});
-};
+// 	btnSearch.addEventListener("click", () => {
+// 		const search = inputSearch.value.toLowerCase().trim();
+// 		if (search) {
+// 			const searchRestaurants = restaurants.filter((restaurant) => {
+// 				return (
+// 					restaurant.nombre.toLowerCase().includes(search) ||
+// 					restaurant.localidad.toLowerCase().includes(search) ||
+// 					restaurant.cocina.toLowerCase().includes(search)
+// 				);
+// 			});
+
+// 			displayFilteredRestaurants(searchRestaurants);
+// 		}
+// 	});
+// };
+document.addEventListener("DOMContentLoaded", () => {
+	const searchButton = document.querySelector(".nav-search-btn");
+	const searchInput = document.getElementById("search");
+
+	//creamos la funcion para filtrar y mostrar los restaurantes
+	const searchRestaurants = () => {
+		const searchTerm = searchInput.value.toLowerCase().trim();
+
+		const filteredRestaurants = restaurants.filter(
+			(restaurant) =>
+				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
+				restaurant.localidad.toLowerCase().includes(searchTerm) ||
+				restaurant.cocina.toLowerCase().includes(searchTerm)
+		);
+
+		displayFilteredRestaurants(filteredRestaurants);
+	};
+
+	// searchInput.addEventListener("input", searchRestaurants);
+
+	searchButton.addEventListener("click", searchRestaurants);
+});
 
 //he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
 
@@ -478,7 +502,7 @@ const displayFilteredRestaurants = (filteredRestaurants = restaurants) => {
 
 	const containerFilters = document.querySelector(".container-cards");
 	containerFilters.innerHTML = "";
-	console.log("filtros restaurantes", filteredRestaurants);
+
 	//crear  tarjetas de los restaurantes filtrados
 	filteredRestaurants.forEach((restaurant) => {
 		const restaurantCard = createRestaurantCard(restaurant);
@@ -590,7 +614,7 @@ const favoriteButton = () => {
 // 	favoriteButton();
 // });
 
-//funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
+//funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
 const recalcularFavoritos = () => {
 	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
 
