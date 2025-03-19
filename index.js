@@ -567,6 +567,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	searchButton.addEventListener("click", searchRestaurants);
 
+	searchInput.addEventListener("keydown", (event) => {
+		if (event.key === "Enter") {
+			searchRestaurants();
+		}
+	})
+
 	//ahora seleccionamos todos los botones y le damos un evento click
 	document
 		.getElementById("two-stars")
