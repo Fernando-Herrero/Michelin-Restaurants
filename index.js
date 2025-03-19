@@ -552,6 +552,29 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 const saveUsers = () => localStorage.setItem("users", JSON.stringify(users));
 
 const form = document.getElementById("form");
+const userListDiv = document.getElementById("user-list");
+
+const renderUsers = () => {
+	userListDiv.innerHTML = '';
+
+	if (users.length > 0) {
+		const ul = document.createElement('ul');
+
+		users.forEach((user) => {
+			const li = document.createElement('li');
+			li.textContent = `Name: ${user.name}, Email: ${user.email}`;
+			ul.appendChild(li);
+		});
+
+		userListDiv.appendChild(ul);
+	} else {
+		userListDiv.textContent = "No users registered.";
+	}
+};
+
+// Llamamos a renderUsers al cargar la página para mostrar los usuarios guardados
+renderUsers();
+
 if (form) {
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
@@ -577,6 +600,9 @@ if (form) {
 
 		// resetear el formulario después de enviarlo
 		form.reset();
+
+		//Volver a mostrar usuarios despues de agregar uno nuevo
+		renderUsers()
 	});
 }
 
@@ -588,6 +614,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	const searchRestaurants = () => {
 		const searchTerm = searchInput.value.toLowerCase().trim();
 
+		if (searchTerm === "") {
+			const containerFilters = document.querySelector(".container-cards");
+			containerFilters.innerHTML = "";
+			return
+		}
+		//Quiero hacer que haya que escribir los nombres en orden. No se como
 		const filteredRestaurants = restaurants.filter(
 			(restaurant) =>
 				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
@@ -598,7 +630,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		displayFilteredRestaurants(filteredRestaurants);
 	};
 
-	// searchInput.addEventListener("input", searchRestaurants);
+	searchInput.addEventListener("input", searchRestaurants);
 
 	searchButton.addEventListener("click", searchRestaurants);
 

@@ -139,6 +139,20 @@ body {
     justify-content: space-between;
 }
 
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+    width: 30%;
+    gap: 10px;
+}
+
 .dark-mode-btn {
     font-size: larger;
 }
