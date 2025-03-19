@@ -365,26 +365,47 @@ const restaurants = [
 ];
 
 //funcion para crear la barra de búsqueda del inicio
-const createSearchBar = (restaurants) => {
-	const btnSearch = document.getElementById("nav-search-btn");
-	const inputSearch = document.getElementById("search");
+// const createSearchBar = (restaurants) => {
+// 	const btnSearch = document.getElementById("nav-search-btn");
+// 	const inputSearch = document.getElementById("search");
 
-	btnSearch.addEventListener("click", () => {
-		const search = inputSearch.value.toLowerCase().trim();
-		console.log("buscando", search)
-		if (search) {
-			const searchRestaurants = restaurants.filter((restaurant) => {
-				return (
-				restaurant.nombre.toLowerCase().includes(search) ||
-				restaurant.localidad.toLowerCase().includes(search) ||
-				restaurant.cocina.toLowerCase().includes(search)
-				);
-			});
-			
-			displayFilteredRestaurants(searchRestaurants);
-		};
-	});
-};
+// 	btnSearch.addEventListener("click", () => {
+// 		const search = inputSearch.value.toLowerCase().trim();
+// 		if (search) {
+// 			const searchRestaurants = restaurants.filter((restaurant) => {
+// 				return (
+// 					restaurant.nombre.toLowerCase().includes(search) ||
+// 					restaurant.localidad.toLowerCase().includes(search) ||
+// 					restaurant.cocina.toLowerCase().includes(search)
+// 				);
+// 			});
+
+// 			displayFilteredRestaurants(searchRestaurants);
+// 		}
+// 	});
+// };
+document.addEventListener("DOMContentLoaded", () => {
+	const searchButton = document.querySelector(".nav-search-btn");
+	const searchInput = document.getElementById("search");
+
+	//creamos la funcion para filtrar y mostrar los restaurantes
+	const searchRestaurants = () => {
+		const searchTerm = searchInput.value.toLowerCase().trim();
+
+		const filteredRestaurants = restaurants.filter(
+			(restaurant) =>
+				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
+				restaurant.localidad.toLowerCase().includes(searchTerm) ||
+				restaurant.cocina.toLowerCase().includes(searchTerm)
+		);
+
+		displayFilteredRestaurants(filteredRestaurants);
+	};
+
+	// searchInput.addEventListener("input", searchRestaurants);
+
+	searchButton.addEventListener("click", searchRestaurants);
+});
 
 //he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
 
@@ -481,7 +502,7 @@ const displayFilteredRestaurants = (filteredRestaurants = restaurants) => {
 
 	const containerFilters = document.querySelector(".container-cards");
 	containerFilters.innerHTML = "";
-	console.log("filtros restaurantes", filteredRestaurants);
+
 	//crear  tarjetas de los restaurantes filtrados
 	filteredRestaurants.forEach((restaurant) => {
 		const restaurantCard = createRestaurantCard(restaurant);
@@ -531,9 +552,11 @@ const filterByPrice = (minPrice, maxPrice) => {
 document
 	.getElementById("two-stars")
 	.addEventListener("click", () => fileterByStars(2));
+
 document
 	.getElementById("three-stars")
 	.addEventListener("click", () => fileterByStars(3));
+
 const selectLocality = document.getElementById("locality-selector");
 
 const localityRestaurants = restaurants.reduce((acc, { localidad }) => {
@@ -554,6 +577,7 @@ localityRestaurants.forEach((restaurant) => {
 
 	selectLocality.append(optionSelect);
 });
+
 document.getElementById("cousine").addEventListener("click", () => {
 	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
 	if (cousine) {
@@ -564,6 +588,7 @@ document.getElementById("cousine").addEventListener("click", () => {
 		);
 	}
 });
+
 document.getElementById("price").addEventListener("click", () => {
 	const minPrice = parseFloat(
 		prompt("Ingresa el precio minimo que estas buscando:")
@@ -589,7 +614,7 @@ const favoriteButton = () => {
 // 	favoriteButton();
 // });
 
-//funcion para recalcular fsvoritos y guardarlos en un boton que los muestre si los pulsamos
+//funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
 const recalcularFavoritos = () => {
 	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
 
@@ -600,3 +625,38 @@ const recalcularFavoritos = () => {
 };
 
 displayFilteredRestaurants();
+
+//formulario
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+const saveUsers = () => localStorage.setItem("users", JSON.stringify(users));
+
+const form = document.getElementById("form");
+if (form) {
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		const nameValue = document.getElementById("name").value;
+		const emailValue = document.getElementById("email").value;
+		const policyChecked = document.getElementById("policy").checked;
+
+		if (!policyChecked) {
+			alert("Debes aceptar la política de Privacidad.");
+			return;
+		}
+
+		const user = {
+			id: Date.now(),
+			name: nameValue,
+			email: emailValue,
+			policy: policyChecked,
+		};
+
+		users.push(user);
+		saveUsers();
+
+		// resetear el formulario después de enviarlo
+		form.reset();
+	});
+};
+
