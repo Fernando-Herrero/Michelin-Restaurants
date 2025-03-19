@@ -83,27 +83,58 @@
 
 			<div class="restaurants-three-stars"></div>
 
-			<section id="form-container">
-                <div class="form-section">
-                    <h3>Register</h3>
-                    <form id="form">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required />
+			<div class="form-one-star-container">
+				<section id="form-container">
+					<div class="form-section">
+						<h3>Register</h3>
+						<form id="form">
+							<label for="name">Name:</label>
+							<input type="text" id="name" name="name" required />
 
-						<label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required />
+							<label for="email">Email:</label>
+							<input type="email" id="email" name="email" required />
 
-                        <div style="display: flex; gap: 14px">
-                            <input type="checkbox" id="policy" name="policy" />
-                            <label for="policy">I accept the privacy policy</label>
-                        </div>
+							<div style="display: flex; gap: 14px">
+								<input type="checkbox" id="policy" name="policy" />
+								<label for="policy">I accept the privacy policy</label>
+							</div>
 
-                        <button type="submit">Send</button>
-                    </form>
-                </div>
-            </section>
+							<button type="submit">Send</button>
+						</form>
+					</div>
+				</section>
 
-			<section id="oneStar-container"></section>
+				<section id="oneStar-container" class="one-star-container">
+					<div class="one-star">
+						<a
+							class="one-star-images"
+							href="https://guide.michelin.com/es/es/restaurantes/1-estrella-michelin"
+							target="_blank"
+						>
+							<img
+								class="pic-1"
+								src="/media/una-estrella-michelin.png"
+								alt="Logo Michelin one star"
+							/>
+							<img
+								class="pic-2"
+								src="/media/una-estrella-restaurante.jpg"
+								alt="Restaurant Michelin one star"
+							/>
+							<img
+								class="pic-3"
+								src="/media/una-estrella-restaurante-2.jpg"
+								alt="Restaurant Michelin one star"
+							/>
+							<img
+								class="pic-4"
+								src="/media/una-estrella-restaurante-3.jpg"
+								alt="Restaurant Michelin one star"
+							/>
+						</a>
+					</div>
+				</section>
+			</div>
 
 			<div id="user-list"></div>
 		</main>
