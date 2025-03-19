@@ -363,6 +363,7 @@ const restaurants = [
 		favorito: false,
 	},
 ];
+//he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
 
 //funcion para crear la barra de búsqueda del inicio
 // const createSearchBar = (restaurants) => {
@@ -384,59 +385,14 @@ const restaurants = [
 // 		}
 // 	});
 // };
-document.addEventListener("DOMContentLoaded", () => {
-	const searchButton = document.querySelector(".nav-search-btn");
-	const searchInput = document.getElementById("search");
 
-	//creamos la funcion para filtrar y mostrar los restaurantes
-	const searchRestaurants = () => {
-		const searchTerm = searchInput.value.toLowerCase().trim();
+//funcion para crear la imagen de la tarjeta
+const createRestaurantImage = (image, title) => {
+	const restaurantImage = document.createElement("img");
+	restaurantImage.src = image;
+	restaurantImage.alt = title;
 
-		const filteredRestaurants = restaurants.filter(
-			(restaurant) =>
-				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
-				restaurant.localidad.toLowerCase().includes(searchTerm) ||
-				restaurant.cocina.toLowerCase().includes(searchTerm)
-		);
-
-		displayFilteredRestaurants(filteredRestaurants);
-	};
-
-	// searchInput.addEventListener("input", searchRestaurants);
-
-	searchButton.addEventListener("click", searchRestaurants);
-});
-
-//he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
-
-//funcion para crear el botn que redireccione a la pagina web
-const createContainerButton = (restaurant) => {
-	const container = document.createElement("div");
-	container.classList.add("container-button");
-
-	const favoriteButton = document.createElement("button");
-	favoriteButton.classList.add("favorite-btn");
-	favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
-
-	favoriteButton.addEventListener("click", () => {
-		restaurant.favorito = !restaurant.favorito;
-
-		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
-
-		// favoriteButton.classList.toggle("favorito-activo", restaurant.favorito);
-
-		recalcularFavoritos();
-	});
-
-	const aLinkWebsite = document.createElement("a");
-	aLinkWebsite.classList.add("website-button");
-	aLinkWebsite.href = restaurant.url;
-	aLinkWebsite.target = "_blank";
-	aLinkWebsite.rel = "noopener noreferrer";
-	aLinkWebsite.textContent = "Ver mas";
-	container.append(favoriteButton, aLinkWebsite);
-
-	return container;
+	return restaurantImage;
 };
 
 //funcion para crear la info (nombre,localidad...) de la tarjeta
@@ -470,13 +426,34 @@ const createRestaurantInfo = (restaurant) => {
 	return cardInfo;
 };
 
-//funcion para crear la imagen de la tarjeta
-const createRestaurantImage = (image, title) => {
-	const restaurantImage = document.createElement("img");
-	restaurantImage.src = image;
-	restaurantImage.alt = title;
+//funcion para crear el botn que redireccione a la pagina web
+const createContainerButton = (restaurant) => {
+	const container = document.createElement("div");
+	container.classList.add("container-button");
 
-	return restaurantImage;
+	const favoriteButton = document.createElement("button");
+	favoriteButton.classList.add("favorite-btn");
+	favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+
+	favoriteButton.addEventListener("click", () => {
+		restaurant.favorito = !restaurant.favorito;
+
+		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+
+		// favoriteButton.classList.toggle("favorito-activo", restaurant.favorito);
+
+		recalcularFavoritos();
+	});
+
+	const aLinkWebsite = document.createElement("a");
+	aLinkWebsite.classList.add("website-button");
+	aLinkWebsite.href = restaurant.url;
+	aLinkWebsite.target = "_blank";
+	aLinkWebsite.rel = "noopener noreferrer";
+	aLinkWebsite.textContent = "Ver mas";
+	container.append(favoriteButton, aLinkWebsite);
+
+	return container;
 };
 
 //esta sera la funcion principal de la tarjeta, donde uniremos las demas funciones de cada elemento mas pequeño
@@ -494,24 +471,26 @@ const createRestaurantCard = (restaurant) => {
 	return restaurantCard;
 };
 
-//funcion para filtar los restaurantes
-const displayFilteredRestaurants = (filteredRestaurants = restaurants) => {
-	// if (!filteredRestaurants?.length) {
-	//     filteredRestaurants = restaurants;
-	// }
+//funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
+const recalcularFavoritos = () => {
+	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
 
-	const containerFilters = document.querySelector(".container-cards");
-	containerFilters.innerHTML = "";
+	const favoriteButton = document.getElementById("favorite-button");
+	if (favoriteButton) {
+		favoriteButton.textContent = `Favoritos: ${saveFavorites.length}`;
+	}
 
-	//crear  tarjetas de los restaurantes filtrados
-	filteredRestaurants.forEach((restaurant) => {
-		const restaurantCard = createRestaurantCard(restaurant);
-		containerFilters.appendChild(restaurantCard);
+	favoriteButton.addEventListener("click", () => {
+		const favoriteRestaurants = restaurants.filter(
+			(restaurant) => restaurant.favorito
+		);
+		displayFilteredRestaurants(favoriteRestaurants);
 	});
 };
+
 //para cada boton creamos el filtro necesario
 //por estrellas
-const fileterByStars = (stars) => {
+const filterByStars = (stars) => {
 	const filteredRestaurats = restaurants.filter(
 		(restaurant) => restaurant.estrellas === stars
 	);
@@ -548,80 +527,21 @@ const filterByPrice = (minPrice, maxPrice) => {
 	displayFilteredRestaurants(filteredRestaurats);
 };
 
-//ahora seleccionamos todos los botones y le damos un evento click
-document
-	.getElementById("two-stars")
-	.addEventListener("click", () => fileterByStars(2));
-
-document
-	.getElementById("three-stars")
-	.addEventListener("click", () => fileterByStars(3));
-
-const selectLocality = document.getElementById("locality-selector");
-
-const localityRestaurants = restaurants.reduce((acc, { localidad }) => {
-	if (!acc.includes(localidad)) {
-		acc.push(localidad);
+//funcion para filtar los restaurantes
+const displayFilteredRestaurants = (filteredRestaurants = []) => {
+	//estoy inicializando con un array vacio para que no muestre nada pero no se si esta bien
+	if (!filteredRestaurants?.length) {
+		return;
 	}
-	return acc;
-}, []);
 
-selectLocality.addEventListener("change", (event) => {
-	filterByLocality(event.target.value);
-});
+	const containerFilters = document.querySelector(".container-cards");
+	containerFilters.innerHTML = "";
 
-localityRestaurants.forEach((restaurant) => {
-	const optionSelect = document.createElement("option");
-	optionSelect.textContent = restaurant;
-	optionSelect.value = restaurant.toLowerCase();
-
-	selectLocality.append(optionSelect);
-});
-
-document.getElementById("cousine").addEventListener("click", () => {
-	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
-	if (cousine) {
-		filterByCousine(cousine);
-	} else {
-		console.log(
-			"El tipo de cocina que estas buscando no tiene estrellas Michelin"
-		);
-	}
-});
-
-document.getElementById("price").addEventListener("click", () => {
-	const minPrice = parseFloat(
-		prompt("Ingresa el precio minimo que estas buscando:")
-	);
-	const maxPrice = parseFloat(
-		prompt("Ingresa el precio maximo que estas buscando")
-	);
-	if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-		filterByPrice(minPrice, maxPrice);
-	} else {
-		console.log("Introduzca precios válidos");
-	}
-});
-//boton favoritos para intentar que los restaurantes con favorito al pulsarlo aparezcan en el div. conseguido
-const favoriteButton = () => {
-	const favoriteRestaurants = restaurants.filter(
-		(restaurant) => restaurant.favorito
-	);
-	displayFilteredRestaurants(favoriteRestaurants);
-};
-
-// document.getElementById("favorite-button").addEventListener("click", () => {
-// 	favoriteButton();
-// });
-
-//funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
-const recalcularFavoritos = () => {
-	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
-
-	const favoriteButton = document.getElementById("favorite-button");
-	if (favoriteButton) {
-		favoriteButton.textContent = `Favoritos: ${saveFavorites.length}`;
-	}
+	//crear  tarjetas de los restaurantes filtrados
+	filteredRestaurants.forEach((restaurant) => {
+		const restaurantCard = createRestaurantCard(restaurant);
+		containerFilters.appendChild(restaurantCard);
+	});
 };
 
 displayFilteredRestaurants();
@@ -658,5 +578,88 @@ if (form) {
 		// resetear el formulario después de enviarlo
 		form.reset();
 	});
-};
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+	const searchButton = document.querySelector(".nav-search-btn");
+	const searchInput = document.getElementById("search");
+
+	//creamos la funcion para filtrar y mostrar los restaurantes
+	const searchRestaurants = () => {
+		const searchTerm = searchInput.value.toLowerCase().trim();
+
+		const filteredRestaurants = restaurants.filter(
+			(restaurant) =>
+				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
+				restaurant.localidad.toLowerCase().includes(searchTerm) ||
+				restaurant.cocina.toLowerCase().includes(searchTerm)
+		);
+
+		displayFilteredRestaurants(filteredRestaurants);
+	};
+
+	// searchInput.addEventListener("input", searchRestaurants);
+
+	searchButton.addEventListener("click", searchRestaurants);
+
+	searchInput.addEventListener("keydown", (event) => {
+		if (event.key === "Enter") {
+			searchRestaurants();
+		}
+	});
+
+	//ahora seleccionamos todos los botones y le damos un evento click
+	document
+		.getElementById("two-stars")
+		.addEventListener("click", () => filterByStars(2));
+
+	document
+		.getElementById("three-stars")
+		.addEventListener("click", () => filterByStars(3));
+
+	document.getElementById("cousine").addEventListener("click", () => {
+		const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
+		if (cousine) {
+			filterByCousine(cousine);
+		} else {
+			console.log(
+				"El tipo de cocina que estas buscando no tiene estrellas Michelin"
+			);
+		}
+	});
+
+	document.getElementById("price").addEventListener("click", () => {
+		const minPrice = parseFloat(
+			prompt("Ingresa el precio minimo que estas buscando:")
+		);
+		const maxPrice = parseFloat(
+			prompt("Ingresa el precio maximo que estas buscando")
+		);
+		if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+			filterByPrice(minPrice, maxPrice);
+		} else {
+			console.log("Introduzca precios válidos");
+		}
+	});
+
+	const selectLocality = document.getElementById("locality-selector");
+
+	const localityRestaurants = restaurants.reduce((acc, { localidad }) => {
+		if (!acc.includes(localidad)) {
+			acc.push(localidad);
+		}
+		return acc;
+	}, []);
+
+	selectLocality.addEventListener("change", (event) => {
+		filterByLocality(event.target.value);
+	});
+
+	localityRestaurants.forEach((restaurant) => {
+		const optionSelect = document.createElement("option");
+		optionSelect.textContent = restaurant;
+		optionSelect.value = restaurant.toLowerCase();
+
+		selectLocality.append(optionSelect);
+	});
+});
