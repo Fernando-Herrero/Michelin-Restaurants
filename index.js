@@ -508,9 +508,11 @@ const filterByPrice = (minPrice, maxPrice) => {
 document
 	.getElementById("two-stars")
 	.addEventListener("click", () => fileterByStars(2));
+
 document
 	.getElementById("three-stars")
 	.addEventListener("click", () => fileterByStars(3));
+
 const selectLocality = document.getElementById("locality-selector");
 
 const localityRestaurants = restaurants.reduce((acc, { localidad }) => {
@@ -531,6 +533,7 @@ localityRestaurants.forEach((restaurant) => {
 
 	selectLocality.append(optionSelect);
 });
+
 document.getElementById("cousine").addEventListener("click", () => {
 	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
 	if (cousine) {
@@ -541,6 +544,7 @@ document.getElementById("cousine").addEventListener("click", () => {
 		);
 	}
 });
+
 document.getElementById("price").addEventListener("click", () => {
 	const minPrice = parseFloat(
 		prompt("Ingresa el precio minimo que estas buscando:")
