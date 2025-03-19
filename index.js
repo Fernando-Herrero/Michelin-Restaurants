@@ -363,6 +363,26 @@ const restaurants = [
 		favorito: false,
 	},
 ];
+
+//funcion para crear la barra de búsqueda del inicio
+const createSearchBar = (restaurants) => {
+	const btnSearch = document.getElementById("nav-search-btn");
+	const inputSearch = document.getElementById("search");
+	
+	
+	btnSearch.addEventListener("click", () => {
+		const search = inputSearch.value.toLowercase().trim();
+		if (search) {
+			const searchRestaurants = restaurants.filter(restaurant => {
+				return restaurant.nombre.toLowerCase().includes(search) ||
+				restaurant.localidad.toLowerCase().includes(search) ||
+				restaurant.cocina.toLowerCase().includes(search);
+			});
+
+			displayFilteredRestaurants(searchRestaurants);
+		};});
+};
+
 //he quitado las comas ya que lo que me salia no lo entendia y no lo hemos dado y prefiero que juan me lo explique
 
 //funcion para crear el botn que redireccione a la pagina web
