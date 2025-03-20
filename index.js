@@ -593,9 +593,7 @@ const renderUsers = () => {
 		users.forEach((user, index) => {
 			const li = document.createElement('li');
 			li.classList.add("user-card");
-			li.textContent = `${index + 1}:
-            Name: ${user.name},
-            Email: ${user.email}`;
+			li.textContent = `Name: ${user.name}, \nEmail: ${user.email}`;
 
 			const deleteButton = document.createElement("button");
 			deleteButton.textContent = "X";

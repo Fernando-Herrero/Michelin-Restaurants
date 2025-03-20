@@ -214,6 +214,7 @@ body {
 	border: 1px solid rgb(21, 91, 21);
 	border-radius: 10px;
 	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    white-space: pre-line;
 }
 
 .footer {
