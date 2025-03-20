@@ -573,8 +573,11 @@ displayFilteredRestaurants();
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const saveUsers = () => localStorage.setItem("users", JSON.stringify(users));
+
 const deleteUser = (index) => {
-	users.esplice(index, 1);
+	users.splice(index, 1);
+	saveUsers();
+	renderUsers();
 };
 
 const form = document.getElementById("form");
@@ -588,22 +591,27 @@ const renderUsers = () => {
 
 		users.forEach((user, index) => {
 			const li = document.createElement('li');
-			li.textContent = `Name: ${user.name}, Email: ${user.email}`;
-			const deleteBtn = document.createElement("button");
-			deleteBtn.textContent = "X";
-			deleteUser(index);
-			li.appendChild(deleteBtn);
+			li.textContent = `${index + 1}:
+            Name: ${user.name},
+            Email: ${user.email}`;
+
+			const deleteButton = document.createElement("button");
+			deleteButton.textContent = "X";
+			deleteButton.style.backgroundColor = "red";
+			deleteButton.style.borderRadius = "100%";
+
+            deleteButton.addEventListener("click", () => {
+                deleteUser(index);
+            });
+
+			li.appendChild(deleteButton);
 			ul.appendChild(li);
 		});
-
 
 		userListDiv.appendChild(ul);
 	} else {
 		userListDiv.textContent = "No users registered.";
 	}
-
-	saveUsers();
-	renderUsers();
 };
 
 
