@@ -596,7 +596,6 @@ const renderUsers = () => {
 			ul.appendChild(li);
 		});
 
-
 		userListDiv.appendChild(ul);
 	} else {
 		userListDiv.textContent = "No users registered.";
