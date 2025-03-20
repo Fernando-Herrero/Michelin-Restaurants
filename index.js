@@ -530,9 +530,12 @@ const filterByCousine = (cousine) => {
 
 //por precio
 const filterByPrice = (minPrice, maxPrice) => {
-	const parsedPrice = minPrice.trim() && maxPrice.trim();
+
+	minPrice = Number(minPrice);
+	maxPrice = Number(maxPrice);
+
 	const filteredRestaurants = restaurants.filter((restaurant) =>
-		restaurant.precio >= minPrice && restaurant.precio <= maxPrice.includes(parsedPrice)
+		restaurant.precio >= minPrice && restaurant.precio <= maxPrice
 	);
 	displayFilteredRestaurants(filteredRestaurants);
 };
@@ -715,7 +718,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		selectLocality.append(optionSelect);
 	});
 
-	// //selector por cocina
+	//selector por cocina
 	const selectCousine = document.getElementById("cousine-selector");
 
 	const cousineRestaurants = restaurants.reduce((acc, { cocina }) => {
@@ -730,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	cousineRestaurants.forEach((cousine) => {
-		const optionSelectCousine = document.createElement("option-cousine");
+		const optionSelectCousine = document.createElement("option");
 		optionSelectCousine.textContent = cousine;
 		optionSelectCousine.value = cousine.toLowerCase();
 
@@ -738,7 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 
-	// //selector por precio
+	//selector por precio
 	const selectPrice = document.getElementById("price-selector");
 
 	const priceRestaurants = restaurants.reduce((acc, { precio }) => {
@@ -749,12 +752,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	}, []);
 
 	selectPrice.addEventListener("change", (event) => {
-		filterByPrice(event.target.value);
+		const selectedPrice = Number(event.target.value);
+		filterByPrice(0, selectedPrice);
 	});
 
 	priceRestaurants.forEach((price) => {
 		const optionSelectPrice = document.createElement("option");
-		optionSelectPrice.textContent = price;
+		optionSelectPrice.textContent = `Máximo de ${price}€`;
 		optionSelectPrice.value = price;
 
 		selectPrice.append(optionSelectPrice);
