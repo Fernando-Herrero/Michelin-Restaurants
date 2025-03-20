@@ -573,6 +573,9 @@ displayFilteredRestaurants();
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const saveUsers = () => localStorage.setItem("users", JSON.stringify(users));
+const deleteUser = (index) => {
+	users.esplice(index, 1);
+};
 
 const form = document.getElementById("form");
 const userListDiv = document.getElementById("user-list");
@@ -583,17 +586,26 @@ const renderUsers = () => {
 	if (users.length > 0) {
 		const ul = document.createElement('ul');
 
-		users.forEach((user) => {
+		users.forEach((user, index) => {
 			const li = document.createElement('li');
 			li.textContent = `Name: ${user.name}, Email: ${user.email}`;
+			const deleteBtn = document.createElement("button");
+			deleteBtn.textContent = "X";
+			deleteUser(index);
+			li.appendChild(deleteBtn);
 			ul.appendChild(li);
 		});
+
 
 		userListDiv.appendChild(ul);
 	} else {
 		userListDiv.textContent = "No users registered.";
 	}
+
+	saveUsers();
+	renderUsers();
 };
+
 
 // Llamamos a renderUsers al cargar la página para mostrar los usuarios guardados
 renderUsers();
