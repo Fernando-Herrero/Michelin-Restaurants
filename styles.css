@@ -141,7 +141,8 @@ body {
 
 .form-one-star-container {
     display: flex;
-    gap: 20px;
+    align-self: center;
+    gap: 50px;
 }
 
 .form-section {
@@ -157,10 +158,10 @@ body {
     gap: 10px;
 }
 
-.one-star-container {
+/* .one-star-container {
     display: flex;
     flex: 2;
-}
+} */
 
 .one-star-images {
     display: grid;
