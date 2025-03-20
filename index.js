@@ -588,9 +588,11 @@ const renderUsers = () => {
 
 	if (users.length > 0) {
 		const ul = document.createElement('ul');
+		ul.classList.add("users-box");
 
 		users.forEach((user, index) => {
 			const li = document.createElement('li');
+			li.classList.add("user-card");
 			li.textContent = `${index + 1}:
             Name: ${user.name},
             Email: ${user.email}`;
