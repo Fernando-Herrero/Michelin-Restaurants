@@ -512,20 +512,40 @@ const filterByLocality = (locality) => {
 
 //por cocina
 const filterByCousine = (cousine) => {
-	const filteredRestaurats = restaurants.filter(
-		(restaurant) => restaurant.cocina.toLowerCase() === cousine.toLowerCase()
+	const parsedCousine = cousine.toLowerCase().trim();
+	const filteredRestaurants = restaurants.filter((restaurant) =>
+		restaurant.cocina.toLowerCase().includes(parsedCousine)
 	);
-	displayFilteredRestaurants(filteredRestaurats);
+	displayFilteredRestaurants(filteredRestaurants);
 };
+
+// //por cocina
+// const filterByCousine = (cousine) => {
+// 	const filteredRestaurats = restaurants.filter(
+// 		(restaurant) => restaurant.cocina.toLowerCase() === cousine.toLowerCase()
+// 	);
+// 	displayFilteredRestaurants(filteredRestaurats);
+// };
+
 
 //por precio
 const filterByPrice = (minPrice, maxPrice) => {
-	const filteredRestaurats = restaurants.filter(
-		(restaurant) =>
-			restaurant.precio >= minPrice && restaurant.precio <= maxPrice
+	const parsedPrice = minPrice.trim() && maxPrice.trim();
+	const filteredRestaurants = restaurants.filter((restaurant) =>
+		restaurant.precio >= minPrice && restaurant.precio <= maxPrice.includes(parsedPrice)
 	);
-	displayFilteredRestaurants(filteredRestaurats);
+	displayFilteredRestaurants(filteredRestaurants);
 };
+
+// //por precio
+// const filterByPrice = (minPrice, maxPrice) => {
+// 	const filteredRestaurats = restaurants.filter(
+// 		(restaurant) =>
+// 			restaurant.precio >= minPrice && restaurant.precio <= maxPrice
+// 	);
+// 	displayFilteredRestaurants(filteredRestaurats);
+// };
+
 
 //funcion para filtar los restaurantes
 const displayFilteredRestaurants = (filteredRestaurants = []) => {
@@ -649,30 +669,30 @@ document.addEventListener("DOMContentLoaded", () => {
 		.getElementById("three-stars")
 		.addEventListener("click", () => filterByStars(3));
 
-	document.getElementById("cousine").addEventListener("click", () => {
-		const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
-		if (cousine) {
-			filterByCousine(cousine);
-		} else {
-			console.log(
-				"El tipo de cocina que estas buscando no tiene estrellas Michelin"
-			);
-		}
-	});
+	// document.getElementById("cousine").addEventListener("click", () => {
+	// 	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
+	// 	if (cousine) {
+	// 		filterByCousine(cousine);
+	// 	} else {
+	// 		console.log(
+	// 			"El tipo de cocina que estas buscando no tiene estrellas Michelin"
+	// 		);
+	// 	}
+	// });
 
-	document.getElementById("price").addEventListener("click", () => {
-		const minPrice = parseFloat(
-			prompt("Ingresa el precio minimo que estas buscando:")
-		);
-		const maxPrice = parseFloat(
-			prompt("Ingresa el precio maximo que estas buscando")
-		);
-		if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-			filterByPrice(minPrice, maxPrice);
-		} else {
-			console.log("Introduzca precios válidos");
-		}
-	});
+	// document.getElementById("price").addEventListener("click", () => {
+	// 	const minPrice = parseFloat(
+	// 		prompt("Ingresa el precio minimo que estas buscando:")
+	// 	);
+	// 	const maxPrice = parseFloat(
+	// 		prompt("Ingresa el precio maximo que estas buscando")
+	// 	);
+	// 	if (!isNaN(minPrice) && !isNaN(maxPrice)) {
+	// 		filterByPrice(minPrice, maxPrice);
+	// 	} else {
+	// 		console.log("Introduzca precios válidos");
+	// 	}
+	// });
 
 	const selectLocality = document.getElementById("locality-selector");
 
@@ -693,5 +713,50 @@ document.addEventListener("DOMContentLoaded", () => {
 		optionSelect.value = restaurant.toLowerCase();
 
 		selectLocality.append(optionSelect);
+	});
+
+	// //selector por cocina
+	const selectCousine = document.getElementById("cousine-selector");
+
+	const cousineRestaurants = restaurants.reduce((acc, { cocina }) => {
+		if (!acc.includes(cocina)) {
+			acc.push(cocina);
+		}
+		return acc;
+	}, []);
+
+	selectCousine.addEventListener("change", (event) => {
+		filterByCousine(event.target.value);
+	});
+
+	cousineRestaurants.forEach((cousine) => {
+		const optionSelectCousine = document.createElement("option-cousine");
+		optionSelectCousine.textContent = cousine;
+		optionSelectCousine.value = cousine.toLowerCase();
+
+		selectCousine.append(optionSelectCousine);
+	});
+
+
+	// //selector por precio
+	const selectPrice = document.getElementById("price-selector");
+
+	const priceRestaurants = restaurants.reduce((acc, { precio }) => {
+		if (!acc.includes(precio)) {
+			acc.push(precio);
+		}
+		return acc;
+	}, []);
+
+	selectPrice.addEventListener("change", (event) => {
+		filterByPrice(event.target.value);
+	});
+
+	priceRestaurants.forEach((price) => {
+		const optionSelectPrice = document.createElement("option");
+		optionSelectPrice.textContent = price;
+		optionSelectPrice.value = price;
+
+		selectPrice.append(optionSelectPrice);
 	});
 });
