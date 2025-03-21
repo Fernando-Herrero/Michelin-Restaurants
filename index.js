@@ -600,9 +600,9 @@ const renderUsers = () => {
 			deleteButton.style.backgroundColor = "red";
 			deleteButton.style.borderRadius = "100%";
 
-            deleteButton.addEventListener("click", () => {
-                deleteUser(index);
-            });
+			deleteButton.addEventListener("click", () => {
+				deleteUser(index);
+			});
 
 			li.appendChild(deleteButton);
 			ul.appendChild(li);
@@ -782,5 +782,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		optionSelectPrice.value = price;
 
 		selectPrice.append(optionSelectPrice);
+	});
+
+	//botón de contact que te lleva al footer
+	const contactBtn = document.getElementById("btn-contact");
+
+	contactBtn.addEventListener("click", () => {
+		const footer = document.getElementById("footer container");
+		footer.scrollIntoView({
+			behavior: "smooth",  //para que el desplazamiento sea suave
+			block: "start"  //para que el footer se vea desde la parte superior
+		});
 	});
 });

@@ -220,6 +220,8 @@ body {
 .footer {
 	display: flex;
 	justify-content: space-between;
+    background-color: #a91d2b;
+    padding: 20px;
 }
 
 .dark-mode-btn {
