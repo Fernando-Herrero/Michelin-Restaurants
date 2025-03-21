@@ -788,10 +788,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const contactBtn = document.getElementById("btn-contact");
 
 	contactBtn.addEventListener("click", () => {
-		const footer = document.getElementById("footer container");
+		const footer = document.getElementById("footer");
+		console.log("footer", footer)
 		footer.scrollIntoView({
 			behavior: "smooth",  //para que el desplazamiento sea suave
-			block: "start"  //para que el footer se vea desde la parte superior
 		});
 	});
 });
