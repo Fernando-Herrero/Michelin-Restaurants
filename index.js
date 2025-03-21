@@ -784,14 +784,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		selectPrice.append(optionSelectPrice);
 	});
 
-	//botón de contact que te lleva al footer
-	const contactBtn = document.getElementById("btn-contact");
+	// //botón de contact que te lleva al footer
+	// const contactBtn = document.getElementById("btn-contact");
 
-	contactBtn.addEventListener("click", () => {
-		const footer = document.getElementById("footer");
-		console.log("footer", footer)
-		footer.scrollIntoView({
-			behavior: "smooth",  //para que el desplazamiento sea suave
-		});
-	});
+	// contactBtn.addEventListener("click", () => {
+	// 	const footer = document.getElementById("footer");
+	// 	console.log("footer", footer)
+	// 	footer.scrollIntoView({
+	// 		behavior: "smooth",  //para que el desplazamiento sea suave
+	// 	});
+	// });
 });
