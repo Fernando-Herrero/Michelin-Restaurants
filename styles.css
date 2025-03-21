@@ -177,11 +177,20 @@ body {
 .card-restaurant {
 	display: flex;
 	flex-direction: column;
+	background-color: #fbef88;
 }
 
 .card-restaurant img {
 	flex: 1;
 	max-width: 150px;
+	border-radius: 8px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 8px 10px;
 }
 
 .form-one-star-container {
