@@ -683,6 +683,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
+	//botón log in para introducir email y contraseña
+	document.getElementById("btn-login").addEventListener("click", () => {
+		const email = prompt("Enter your email:");
+		if (email) {
+			const password = prompt("Enter your password");
+
+			if (password) {
+				console.log("Email", email);
+				console.log("Password", password);
+			} else {
+				console.log("The password was not entered");
+			}
+		} else {
+			console.log("The email was not entered")
+		}
+	});
 	//ahora seleccionamos todos los botones y le damos un evento click
 	document
 		.getElementById("two-stars")
