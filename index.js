@@ -699,6 +699,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			console.log("The email was not entered")
 		}
 	});
+
+
 	//ahora seleccionamos todos los botones y le damos un evento click
 	document
 		.getElementById("two-stars")
@@ -798,6 +800,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		optionSelectPrice.value = price;
 
 		selectPrice.append(optionSelectPrice);
+	});
+
+
+	//botón modo oscuro 
+	const toggleModeButton = document.getElementById("dark-mode-btn");
+	const body = document.body;
+
+	// Función para cambiar entre modo claro y oscuro
+	toggleModeButton.addEventListener("click", () => {
+		if (body.classList.contains("light-mode")) {
+			body.classList.remove("light-mode");
+			body.classList.add("dark-mode");
+			toggleModeButton.textContent = "🌞"; // Cambiar ícono a sol
+		} else {
+			body.classList.remove("dark-mode");
+			body.classList.add("light-mode");
+			toggleModeButton.textContent = "🌙"; // Cambiar ícono a luna
+		}
 	});
 
 	// //botón de contact que te lleva al footer

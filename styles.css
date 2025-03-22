@@ -312,6 +312,16 @@ footer h4 {
         justify-content: center;
 }
 
-.dark-mode-btn {
-	font-size: larger;
+body.light-mode {
+    background-color: #f4f4f4;
+    color: black;
 }
+
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+/* .dark-mode-btn {
+	font-size: larger;
+} */
