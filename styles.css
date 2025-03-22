@@ -294,10 +294,22 @@ body {
 
 .footer {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+    gap: 18px;
+    font-size: 18px;
 	background-color: #a91d2b;
 	padding: 20px;
-	font-size: 16px;
+}
+
+.info-btn-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+footer h4 {
+    display: flex;
+        justify-content: center;
 }
 
 .dark-mode-btn {
