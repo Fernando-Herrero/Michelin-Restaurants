@@ -121,6 +121,21 @@ body {
 	font-size: 14px;
 }
 
+#two-stars, #three-stars {
+    display: flex;
+    
+}
+
+#two-stars img {
+    border-radius: 22px;
+    margin: 2px;
+}
+
+#three-stars img {
+    border-radius: 22px;
+    margin: 2px;
+}
+
 .btn-filters {
 	display: flex;
 	justify-content: flex-end;
@@ -290,6 +305,11 @@ body {
 	border-radius: 10px;
 	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 	white-space: pre-line;
+}
+
+#user-list {
+    padding: 30px 10px;
+    background-color: #ead8c0;
 }
 
 .footer {
