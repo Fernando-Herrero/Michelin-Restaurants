@@ -649,6 +649,51 @@ if (form) {
 	});
 }
 
+const displayInitialRestaurants = () => {
+	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
+	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
+
+	twoStarsContainer.innerHTML = "";
+	threeStarsContainer.innerHTML = "";
+
+	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2).slice(0,4);
+
+	twoStarRestaurants.forEach(restaurant => {
+		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+
+	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3).slice(0,4);
+
+	threeStarRestaurants.forEach(restaurant => {
+		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+}
+
+const displayAllTwoRestaurants = () => {
+	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
+
+	twoStarsContainer.innerHTML = "";
+
+	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2);
+	
+	twoStarRestaurants.forEach(restaurant => {
+		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+};
+
+const displayAllThreeRestaurants = () => {
+	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
+
+	threeStarsContainer.innerHTML = "";
+
+	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3);
+	
+	threeStarRestaurants.forEach(restaurant => {
+		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+};
+
+
 document.addEventListener("DOMContentLoaded", () => {
 	const searchButton = document.querySelector(".nav-search-btn");
 	const searchInput = document.getElementById("search");
@@ -831,26 +876,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 		behavior: "smooth",  //para que el desplazamiento sea suave
 	// 	});
 	// });
-
 	displayInitialRestaurants();
+
+	document.querySelector(".link-plus-two-restaurants").addEventListener("click", (event) => {
+		event.preventDefault();
+		displayAllTwoRestaurants();
+	});
+
+	document.querySelector(".link-plus-three-restaurants").addEventListener("click", (event) => {
+		event.preventDefault();
+		displayAllThreeRestaurants();
+	});
 });
 
-const displayInitialRestaurants = () => {
-	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
-	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
-
-	twoStarsContainer.innerHTML = "";
-	threeStarsContainer.innerHTML = "";
-
-	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2).slice(0,4);
-
-	twoStarRestaurants.forEach(restaurant => {
-		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
-	});
-
-	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3).slice(0,4);
-
-	threeStarRestaurants.forEach(restaurant => {
-		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
-	});
-}
