@@ -201,20 +201,51 @@ body {
 .card-restaurant {
 	display: flex;
 	flex-direction: column;
+	gap: 8px;
 	background-color: #fbef88;
+	border: 1px solid rgb(21, 91, 21);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .card-restaurant img {
-	flex: 1;
-	max-width: 150px;
-	border-radius: 8px;
+	max-width: 100%;
+	min-height: 120px;
+	object-fit: cover;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 }
 
 .card-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 8px 10px;
+	justify-content: space-between;
+	height: 100%;
+    padding: 10px;
+}
+
+.card-div-info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.card-div-info h3 {
+	font-size: 14px;
+}
+
+.card-div-info p {
+	font-size: 10px;
+}
+
+.container-button {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.favorite-button {
+	align-self: center;
 }
 
 .form-one-star-container {

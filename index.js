@@ -401,6 +401,7 @@ const createRestaurantInfo = (restaurant) => {
 	cardInfo.classList.add("card-info");
 
 	const divInfo = document.createElement("div");
+	divInfo.classList.add("card-div-info");
 
 	const titleCard = document.createElement("h3");
 	titleCard.textContent = restaurant.nombre;
