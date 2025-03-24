@@ -831,4 +831,26 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 		behavior: "smooth",  //para que el desplazamiento sea suave
 	// 	});
 	// });
+
+	displayInitialRestaurants();
 });
+
+const displayInitialRestaurants = () => {
+	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
+	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
+
+	twoStarsContainer.innerHTML = "";
+	threeStarsContainer.innerHTML = "";
+
+	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2).slice(0,4);
+
+	twoStarRestaurants.forEach(restaurant => {
+		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+
+	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3).slice(0,4);
+
+	threeStarRestaurants.forEach(restaurant => {
+		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
+	});
+}

@@ -157,6 +157,16 @@ body {
 
 .restaurants-container {
 	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 10px 5px;
+    border: 1px solid rgb(21, 91, 21);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-title-anchor {
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -255,6 +265,7 @@ body {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, minmax(100px, 130px));
 	gap: 5px;
+
 }
 
 .one-star-images img {
@@ -263,6 +274,11 @@ body {
 	object-fit: cover;
 	margin: auto;
 	border-radius: 10px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.one-star-images img:hover {
+	transform: scale(1.1);
 }
 
 .pic-1 {
@@ -299,6 +315,7 @@ body {
 .user-card {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 10px 5px;
 	border: 1px solid rgb(21, 91, 21);
 	border-radius: 10px;
