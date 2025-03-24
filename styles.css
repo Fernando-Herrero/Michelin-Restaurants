@@ -212,6 +212,11 @@ a[ href="#contact"] {
 	border: 1px solid rgb(21, 91, 21);
     border-radius: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease-in-out;
+}
+
+.card-restaurant:hover {
+	transform: scale(1.1);
 }
 
 .card-restaurant img {
@@ -255,6 +260,7 @@ a[ href="#contact"] {
 	background-color: #f9f1a9;
 	border-radius: 6px;
 	font-size: 10px;
+	cursor: pointer;
 }
 
 .favorited-btn {
