@@ -773,6 +773,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	cousineRestaurants.forEach((cousine) => {
 		const optionSelectCousine = document.createElement("option");
 		optionSelectCousine.textContent = cousine;
+		optionSelectCousine.title = cousine;
 		optionSelectCousine.value = cousine.toLowerCase();
 
 		selectCousine.append(optionSelectCousine);
@@ -796,7 +797,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	priceRestaurants.forEach((price) => {
 		const optionSelectPrice = document.createElement("option");
-		optionSelectPrice.textContent = `Máximo de ${price}€`;
+		optionSelectPrice.textContent = `${price}€`;
 		optionSelectPrice.value = price;
 
 		selectPrice.append(optionSelectPrice);

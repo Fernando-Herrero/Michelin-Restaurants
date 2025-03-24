@@ -65,7 +65,7 @@ body {
 .header {
 	display: flex;
 	flex-direction: column;
-	gap: 44px;
+	gap: 30px;
 }
 
 .nav-bar-container {
@@ -86,7 +86,6 @@ body {
 .search-bar {
 	display: flex;
 	gap: 10px;
-	padding: 0px 14px;
 }
 
 #search {
@@ -123,17 +122,13 @@ body {
 
 #two-stars, #three-stars {
     display: flex;
-    
+    border: none;
+	background-color: white;
+	padding: 0;
 }
 
-#two-stars img {
+#two-stars img, #three-stars img {
     border-radius: 22px;
-    margin: 2px;
-}
-
-#three-stars img {
-    border-radius: 22px;
-    margin: 2px;
 }
 
 .btn-filters {
@@ -142,18 +137,22 @@ body {
 	gap: 10px;
 }
 
+.btn-filters select {
+	max-width: 100px;
+}
+
 /*he creado algunos estilos solo para que no me saliesen enormes las tarjetas */
 .main-container {
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: 30px;
 }
 
 .main-container h1 {
 	display: flex;
 	justify-content: center;
-	padding-top: 44px;
-	font-size: 44px;
+	padding-top:30px;
+	font-size: 40px;
 }
 
 .restaurants-container {
@@ -173,7 +172,7 @@ body {
 }
 
 .img-title-restaurants img {
-	width: 100px;
+	width: 80px;
 	border-radius: 100px;
 }
 
