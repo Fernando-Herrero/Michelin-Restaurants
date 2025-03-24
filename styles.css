@@ -35,7 +35,7 @@ ul {
 
 a {
 	color: inherit;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 /* A partir de aquí introduce tus estilos */
