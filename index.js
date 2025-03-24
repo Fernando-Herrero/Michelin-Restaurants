@@ -386,6 +386,16 @@ const restaurants = [
 // 	});
 // };
 
+//cargar favoritos al iniciar
+const loadFavorites = () => {
+	const saveFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+	saveFavorites.forEach((fav) => {
+		const restaurant = restaurants.find(restaurant => restaurant.id === fav.id);
+		if (restaurant) restaurant.favorito = true;
+	});
+};
+
 //funcion para crear la imagen de la tarjeta
 const createRestaurantImage = (image, title) => {
 	const restaurantImage = document.createElement("img");
@@ -434,16 +444,19 @@ const createContainerButton = (restaurant) => {
 
 	const favoriteButton = document.createElement("button");
 	favoriteButton.classList.add("favorite-btn");
-	favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+
+	if (restaurant.favorito) {
+		favoriteButton.classList.add("favorited-btn");
+		favoriteButton.textContent = "🌟";
+	} else {
+		favoriteButton.textContent = "⭐";
+	}
 
 	favoriteButton.addEventListener("click", () => {
 		restaurant.favorito = !restaurant.favorito;
 
 		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
-		favoriteButton.classList = restaurant.favorito ? "favorited-btn" : "favorite-btn"; 
-
-
-		// favoriteButton.classList.toggle("favorito-activo", restaurant.favorito);
+		favoriteButton.classList.toggle("favorited-btn", restaurant.favorito);
 
 		recalcularFavoritos();
 	});
@@ -477,6 +490,8 @@ const createRestaurantCard = (restaurant) => {
 //funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
 const recalcularFavoritos = () => {
 	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
+
+	localStorage.setItem("favoritos", JSON.stringify(saveFavorites));
 
 	const favoriteButton = document.getElementById("favorite-button");
 	if (favoriteButton) {
@@ -698,6 +713,9 @@ const displayAllThreeRestaurants = () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+	loadFavorites();
+	recalcularFavoritos();
+
 	const searchButton = document.querySelector(".nav-search-btn");
 	const searchInput = document.getElementById("search");
 

@@ -8,6 +8,7 @@ html,
 body {
 	font-family: monospace, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	scroll-behavior: smooth;
 }
 
 h1,
@@ -88,7 +89,7 @@ body {
 	gap: 10px;
 }
 
-#search {
+.search {
 	border: 1px solid #cccccc;
 	border-radius: 8px;
 	padding: 8px 38px;
@@ -118,6 +119,10 @@ body {
 	padding: 0 18px;
 	line-height: 40px;
 	font-size: 14px;
+}
+
+a[ href="#contact"] {
+	text-decoration: none;
 }
 
 #two-stars, #three-stars {
@@ -248,10 +253,16 @@ body {
 .favorite-btn {
 	align-self: center;
 	background-color: #f9f1a9;
+	border-radius: 6px;
+	font-size: 10px;
 }
 
 .favorited-btn {
 	background-color: rgb(21, 91, 21);
+}
+
+.container-button a {
+	font-size: 10px;
 }
 
 .form-one-star-container {
