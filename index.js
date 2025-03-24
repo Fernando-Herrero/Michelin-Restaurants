@@ -440,6 +440,8 @@ const createContainerButton = (restaurant) => {
 		restaurant.favorito = !restaurant.favorito;
 
 		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
+		favoriteButton.classList = restaurant.favorito ? "favorited-btn" : "favorite-btn"; 
+
 
 		// favoriteButton.classList.toggle("favorito-activo", restaurant.favorito);
 

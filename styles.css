@@ -244,8 +244,13 @@ body {
 	align-items: center;
 }
 
-.favorite-button {
+.favorite-btn {
 	align-self: center;
+	background-color: #f9f1a9;
+}
+
+.favorited-btn {
+	background-color: rgb(21, 91, 21);
 }
 
 .form-one-star-container {
