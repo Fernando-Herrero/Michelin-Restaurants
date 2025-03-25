@@ -431,6 +431,7 @@ const createContainerButton = (restaurant) => {
 		favoriteButton.classList.toggle("favorited-btn", restaurant.favorito);
 
 		recalcularFavoritos();
+		displayInitialRestaurants();
 	});
 
 	const aLinkWebsite = document.createElement("a");
@@ -452,6 +453,10 @@ const createRestaurantCard = (restaurant) => {
 	const { imagen, nombre } = restaurant;
 	const imageCard = createRestaurantImage(imagen, nombre);
 	restaurantCard.appendChild(imageCard);
+
+	// Forzar la actualización del estado de favoritos
+	const currentFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+	restaurant.favorito = currentFavorites.some(fav => fav.id === restaurant.id);
 
 	const restaurantCardInfo = createRestaurantInfo(restaurant);
 	restaurantCard.appendChild(restaurantCardInfo);
@@ -483,10 +488,7 @@ const recalcularFavoritos = () => {
 	}
 
 	if (CURRENT_VIEW === "favoritePage") {
-		const favoriteRestaurants = restaurants.filter(
-			(restaurant) => restaurant.favorito
-		);
-		displayFilteredRestaurants(favoriteRestaurants);
+		displayFilteredRestaurants(saveFavorites);
 	}
 	favoriteButton.addEventListener("click", () => {
 		if (CURRENT_VIEW === "favoritePage") {
@@ -500,7 +502,7 @@ const recalcularFavoritos = () => {
 			);
 			displayFilteredRestaurants(favoriteRestaurants);
 		}
-		displayInitialRestaurants();
+	displayInitialRestaurants();
 	});
 };
 
@@ -621,6 +623,15 @@ const displayInitialRestaurants = () => {
 
 	twoStarsContainer.innerHTML = "";
 	threeStarsContainer.innerHTML = "";
+
+	// Obtener siempre los últimos datos de favoritos
+	const favorites = JSON.parse(localStorage.getItem("favoritos")) || [];
+	const favoriteIds = favorites.map((fav) => fav.id);
+
+	// Actualizar el estado en el array restaurants
+	restaurants.forEach((restaurant) => {
+		restaurant.favorito = favoriteIds.includes(restaurant.id);
+	});
 
 	const twoStarRestaurants = restaurants
 		.filter((restaurant) => restaurant.estrellas === 2)
