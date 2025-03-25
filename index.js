@@ -386,12 +386,18 @@ const restaurants = [
 // 	});
 // };
 
+// favoritePage, mainPage
+
+let CURRENT_VIEW = "mainPage";
+
 //cargar favoritos al iniciar
 const loadFavorites = () => {
 	const saveFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
 
 	saveFavorites.forEach((fav) => {
-		const restaurant = restaurants.find(restaurant => restaurant.id === fav.id);
+		const restaurant = restaurants.find(
+			(restaurant) => restaurant.id === fav.id
+		);
 		if (restaurant) restaurant.favorito = true;
 	});
 };
@@ -498,16 +504,32 @@ const recalcularFavoritos = () => {
 		favoriteButton.textContent = `Favoritos: ${saveFavorites.length}`;
 	}
 
-	favoriteButton.addEventListener("click", () => {
+	if (CURRENT_VIEW === "favoritePage") {
 		const favoriteRestaurants = restaurants.filter(
 			(restaurant) => restaurant.favorito
 		);
 		displayFilteredRestaurants(favoriteRestaurants);
+	}
+	favoriteButton.addEventListener("click", () => {
+		if (CURRENT_VIEW === "favoritePage") {
+			CURRENT_VIEW = "mainPage";
+			displayFilteredRestaurants();
+		} else {
+			CURRENT_VIEW = "favoritePage";
+
+			const favoriteRestaurants = restaurants.filter(
+				(restaurant) => restaurant.favorito
+			);
+			displayFilteredRestaurants(favoriteRestaurants);
+		}
+		displayInitialRestaurants();
 	});
 };
 
 //para cada boton creamos el filtro necesario
 //por estrellas
+let currentTwoStarState = 0;
+
 const filterByStars = (stars) => {
 	const filteredRestaurats = restaurants.filter(
 		(restaurant) => restaurant.estrellas === stars
@@ -545,15 +567,14 @@ const filterByCousine = (cousine) => {
 // 	displayFilteredRestaurants(filteredRestaurats);
 // };
 
-
 //por precio
 const filterByPrice = (minPrice, maxPrice) => {
-
 	minPrice = Number(minPrice);
 	maxPrice = Number(maxPrice);
 
-	const filteredRestaurants = restaurants.filter((restaurant) =>
-		restaurant.precio >= minPrice && restaurant.precio <= maxPrice
+	const filteredRestaurants = restaurants.filter(
+		(restaurant) =>
+			restaurant.precio >= minPrice && restaurant.precio <= maxPrice
 	);
 	displayFilteredRestaurants(filteredRestaurants);
 };
@@ -567,16 +588,15 @@ const filterByPrice = (minPrice, maxPrice) => {
 // 	displayFilteredRestaurants(filteredRestaurats);
 // };
 
-
 //funcion para filtar los restaurantes
 const displayFilteredRestaurants = (filteredRestaurants = []) => {
 	//estoy inicializando con un array vacio para que no muestre nada pero no se si esta bien
+	const containerFilters = document.querySelector(".container-cards");
+	containerFilters.innerHTML = "";
+
 	if (!filteredRestaurants?.length) {
 		return;
 	}
-
-	const containerFilters = document.querySelector(".container-cards");
-	containerFilters.innerHTML = "";
 
 	//crear  tarjetas de los restaurantes filtrados
 	filteredRestaurants.forEach((restaurant) => {
@@ -602,14 +622,14 @@ const form = document.getElementById("form");
 const userListDiv = document.getElementById("user-list");
 
 const renderUsers = () => {
-	userListDiv.innerHTML = '';
+	userListDiv.innerHTML = "";
 
 	if (users.length > 0) {
-		const ul = document.createElement('ul');
+		const ul = document.createElement("ul");
 		ul.classList.add("users-box");
 
 		users.forEach((user, index) => {
-			const li = document.createElement('li');
+			const li = document.createElement("li");
 			li.classList.add("user-card");
 			li.textContent = `Name: ${user.name}, \nEmail: ${user.email}`;
 
@@ -631,7 +651,6 @@ const renderUsers = () => {
 		userListDiv.textContent = "No users registered.";
 	}
 };
-
 
 // Llamamos a renderUsers al cargar la página para mostrar los usuarios guardados
 renderUsers();
@@ -663,54 +682,65 @@ if (form) {
 		form.reset();
 
 		//Volver a mostrar usuarios despues de agregar uno nuevo
-		renderUsers()
+		renderUsers();
 	});
 }
 
 const displayInitialRestaurants = () => {
 	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
-	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
+	const threeStarsContainer = document.querySelector(
+		".restaurants-three-stars"
+	);
 
 	twoStarsContainer.innerHTML = "";
 	threeStarsContainer.innerHTML = "";
 
-	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2).slice(0,4);
+	const twoStarRestaurants = restaurants
+		.filter((restaurant) => restaurant.estrellas === 2)
+		.slice(0, 6);
 
-	twoStarRestaurants.forEach(restaurant => {
+	twoStarRestaurants.forEach((restaurant) => {
 		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
 	});
 
-	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3).slice(0,4);
+	const threeStarRestaurants = restaurants
+		.filter((restaurant) => restaurant.estrellas === 3)
+		.slice(0, 6);
 
-	threeStarRestaurants.forEach(restaurant => {
+	threeStarRestaurants.forEach((restaurant) => {
 		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
 	});
-}
+};
 
 const displayAllTwoRestaurants = () => {
 	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
 
 	twoStarsContainer.innerHTML = "";
 
-	const twoStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 2);
-	
-	twoStarRestaurants.forEach(restaurant => {
+	const twoStarRestaurants = restaurants.filter(
+		(restaurant) => restaurant.estrellas === 2
+	);
+
+	twoStarRestaurants.forEach((restaurant) => {
 		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
 	});
 };
 
 const displayAllThreeRestaurants = () => {
-	const threeStarsContainer = document.querySelector(".restaurants-three-stars");
+	const threeStarsContainer = document.querySelector(
+		".restaurants-three-stars"
+	);
 
 	threeStarsContainer.innerHTML = "";
 
-	const threeStarRestaurants = restaurants.filter(restaurant => restaurant.estrellas === 3);
-	
-	threeStarRestaurants.forEach(restaurant => {
+	const threeStarRestaurants = restaurants.filter(
+		(restaurant) => restaurant.estrellas === 3
+	);
+
+	threeStarRestaurants.forEach((restaurant) => {
 		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
 	});
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
 	loadFavorites();
@@ -726,14 +756,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (searchTerm === "") {
 			const containerFilters = document.querySelector(".container-cards");
 			containerFilters.innerHTML = "";
-			return
+			return;
 		}
 		//Quiero hacer que haya que escribir los nombres en orden. No se como
 		const filteredRestaurants = restaurants.filter(
 			(restaurant) =>
-				restaurant.nombre.toLocaleLowerCase().includes(searchTerm) ||
-				restaurant.localidad.toLowerCase().includes(searchTerm) ||
-				restaurant.cocina.toLowerCase().includes(searchTerm)
+				restaurant.nombre.toLocaleLowerCase().startsWith(searchTerm) ||
+				restaurant.localidad.toLowerCase().startsWith(searchTerm) ||
+				restaurant.cocina.toLowerCase().startsWith(searchTerm)
 		);
 
 		displayFilteredRestaurants(filteredRestaurants);
@@ -762,19 +792,30 @@ document.addEventListener("DOMContentLoaded", () => {
 				console.log("The password was not entered");
 			}
 		} else {
-			console.log("The email was not entered")
+			console.log("The email was not entered");
 		}
 	});
 
-
 	//ahora seleccionamos todos los botones y le damos un evento click
-	document
-		.getElementById("two-stars")
-		.addEventListener("click", () => filterByStars(2));
+	document.getElementById("two-stars").addEventListener("click", () => {
+		const container = document.querySelector(".container-cards");
 
-	document
-		.getElementById("three-stars")
-		.addEventListener("click", () => filterByStars(3));
+		if (container.innerHTML.trim() !== "") {
+			container.innerHTML = "";
+			return;
+		}
+		filterByStars(2);
+	});
+
+	document.getElementById("three-stars").addEventListener("click", () => {
+		const container = document.querySelector(".container-cards");
+
+		if (container.innerHTML.trim() !== "") {
+			container.innerHTML = "";
+			return;
+		}
+		filterByStars(3);
+	});
 
 	// document.getElementById("cousine").addEventListener("click", () => {
 	// 	const cousine = prompt("Introduce el tipo de cocina que estas buscando:");
@@ -845,7 +886,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		selectCousine.append(optionSelectCousine);
 	});
 
-
 	//selector por precio
 	const selectPrice = document.getElementById("price-selector");
 
@@ -869,8 +909,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		selectPrice.append(optionSelectPrice);
 	});
 
-
-	//botón modo oscuro 
+	//botón modo oscuro
 	const toggleModeButton = document.getElementById("dark-mode-btn");
 	const body = document.body;
 
@@ -899,14 +938,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	// });
 	displayInitialRestaurants();
 
-	document.querySelector(".link-plus-two-restaurants").addEventListener("click", (event) => {
-		event.preventDefault();
-		displayAllTwoRestaurants();
-	});
+	document
+		.querySelector(".link-plus-two-restaurants")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
+			displayAllTwoRestaurants();
+		});
 
-	document.querySelector(".link-plus-three-restaurants").addEventListener("click", (event) => {
-		event.preventDefault();
-		displayAllThreeRestaurants();
-	});
+	document
+		.querySelector(".link-plus-three-restaurants")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
+			displayAllThreeRestaurants();
+		});
 });
-
