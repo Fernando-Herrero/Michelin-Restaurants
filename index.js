@@ -430,7 +430,7 @@ const createContainerButton = (restaurant) => {
 		favoriteButton.textContent = restaurant.favorito ? "🌟" : "⭐";
 		favoriteButton.classList.toggle("favorited-btn", restaurant.favorito);
 
-		recalcularFavoritos();
+		updateFavoritos();
 		displayInitialRestaurants();
 	});
 
@@ -456,7 +456,9 @@ const createRestaurantCard = (restaurant) => {
 
 	// Forzar la actualización del estado de favoritos
 	const currentFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
-	restaurant.favorito = currentFavorites.some(fav => fav.id === restaurant.id);
+	restaurant.favorito = currentFavorites.some(
+		(fav) => fav.id === restaurant.id
+	);
 
 	const restaurantCardInfo = createRestaurantInfo(restaurant);
 	restaurantCard.appendChild(restaurantCardInfo);
@@ -477,33 +479,15 @@ const loadFavorites = () => {
 };
 
 //funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
-const recalcularFavoritos = () => {
+const updateFavoritos = () => {
 	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
 
 	localStorage.setItem("favoritos", JSON.stringify(saveFavorites));
 
-	const favoriteButton = document.getElementById("favorite-button");
-	if (favoriteButton) {
-		favoriteButton.textContent = `Favoritos: ${saveFavorites.length}`;
-	}
-
-	if (CURRENT_VIEW === "favoritePage") {
-		displayFilteredRestaurants(saveFavorites);
-	}
-	favoriteButton.addEventListener("click", () => {
-		if (CURRENT_VIEW === "favoritePage") {
-			CURRENT_VIEW = "mainPage";
-			displayFilteredRestaurants();
-		} else {
-			CURRENT_VIEW = "favoritePage";
-
-			const favoriteRestaurants = restaurants.filter(
-				(restaurant) => restaurant.favorito
-			);
-			displayFilteredRestaurants(favoriteRestaurants);
-		}
-	displayInitialRestaurants();
-	});
+	document.getElementById(
+		"favorite-button"
+	).textContent = `Favoritos: ${saveFavorites.length}`;
+	if (CURRENT_VIEW === "favoritePage") displayFilteredRestaurants(saveFavorites);
 };
 
 //para cada boton creamos el filtro necesario
@@ -791,6 +775,22 @@ const setupEventListeners = () => {
 		filterByStars(3);
 	});
 
+	//Favorito
+	document.getElementById("favorite-button").addEventListener("click", () => {
+		if (CURRENT_VIEW === "favoritePage") {
+			CURRENT_VIEW = "mainPage";
+			displayFilteredRestaurants();
+		} else {
+			CURRENT_VIEW = "favoritePage";
+
+			const favoriteRestaurants = restaurants.filter(
+				(restaurant) => restaurant.favorito
+			);
+			displayFilteredRestaurants(favoriteRestaurants);
+		}
+		displayInitialRestaurants();
+	});
+
 	//selectores
 	document
 		.getElementById("locality-selector")
@@ -908,7 +908,7 @@ const setupEventListeners = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	loadFavorites();
-	recalcularFavoritos();
+	updateFavoritos();
 	displayInitialRestaurants();
 	initializeSelectors();
 	renderUsers();
