@@ -443,6 +443,8 @@ body.dark-mode {
 	color: #f4f4f4;
 }
 
-/* .dark-mode-btn {
-	font-size: larger;
-} */
+#dark-mode-btn {
+	height: 38px;
+    line-height: 40px;
+    font-size: 14px;
+} 
