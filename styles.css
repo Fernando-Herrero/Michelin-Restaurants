@@ -439,8 +439,8 @@ body.light-mode {
 }
 
 body.dark-mode {
-	background-color: #333;
-	color: #f4f4f4;
+	background-color: #252525;
+	color: black;
 }
 
 #dark-mode-btn {
