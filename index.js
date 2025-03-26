@@ -374,6 +374,9 @@ const searchInput = document.getElementById("search");
 const formBookingContainer = document.getElementById("formContainerBooking");
 const restaurantNameSpan = document.getElementById("restaurant-name");
 const formBooking = document.getElementById("formBooking");
+const overlay = document.getElementById("booking-overlay");
+const bookingCard = document.getElementById("booking-confirmation");
+const closeButton = document.getElementById("close-booking");
 
 //funcion para crear la imagen de la tarjeta
 const createRestaurantImage = (image, title) => {
@@ -976,12 +979,15 @@ const setupEventListeners = () => {
 		document.getElementById("res-date").textContent = fecha;
 		document.getElementById("res-time").textContent = hora;
 
-		const tarjeta = document.getElementById("booking-confirmation");
-		tarjeta.style.display = "block";
+		overlay.style.display = "block";
+		bookingCard.style.display = "block";
+		document.body.style.overflow = "hidden";
+	});
 
-		document.getElementById("close-booking").addEventListener("click", () => {
-			tarjeta.style.display = "none";
-		});
+	closeButton.addEventListener("click", () => {
+		overlay.style.display = "none";
+		bookingCard.style.display = "none";
+		document.body.style.overflow = "auto";
 	});
 };
 

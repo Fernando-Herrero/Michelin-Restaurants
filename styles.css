@@ -484,6 +484,18 @@ a[href="#contact"] {
     cursor: pointer;
 }
 
+.booking-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    z-index: 999; /* Por DEBAJO de tu tarjeta (asegúrate de que la tarjeta tenga z-index: 1000 o mayor) */
+    backdrop-filter: blur(3px); /* Efecto de desenfoque opcional */
+}
+
 .footer {
 	display: flex;
 	flex-direction: column;
