@@ -441,6 +441,24 @@ const createContainerButton = (restaurant) => {
 	bookingBtn.textContent = "Mesa";
 	bookingBtn.classList.add("booking-btn");
 
+
+
+	// Envío del formulario de reservas
+	document.getElementById("submitBtn").addEventListener("click", () => {
+		const name = document.getElementById("name").value;
+		const date = document.getElementById("date").value;
+		const time = document.getElementById("time").value;
+
+		// Validar los campos del formulario
+		if (!name || !date || !time) {
+			alert("Please, complete all fields");
+			return;
+		}
+	});
+
+
+
+
 	const aLinkWebsite = document.createElement("a");
 	aLinkWebsite.classList.add("website-button");
 	aLinkWebsite.href = restaurant.url;
