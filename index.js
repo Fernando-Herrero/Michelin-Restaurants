@@ -371,6 +371,10 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 const searchButton = document.querySelector(".nav-search-btn");
 const searchInput = document.getElementById("search");
 
+const formBookingContainer = document.getElementById("formContainerBooking");
+const restaurantNameSpan = document.getElementById("restaurant-name");
+const formBooking = document.getElementById("formBooking");
+
 //funcion para crear la imagen de la tarjeta
 const createRestaurantImage = (image, title) => {
 	const restaurantImage = document.createElement("img");
@@ -440,24 +444,20 @@ const createContainerButton = (restaurant) => {
 	const bookingBtn = document.createElement("button");
 	bookingBtn.textContent = "Reservar";
 	bookingBtn.classList.add("booking-btn");
+	bookingBtn.dataset.restaurant = restaurant.nombre;
 
+	// // Envío del formulario de reservas
+	// document.getElementById("submitBtn").addEventListener("click", () => {
+	// 	const name = document.getElementById("name").value;
+	// 	const date = document.getElementById("date").value;
+	// 	const time = document.getElementById("time").value;
 
-
-	// Envío del formulario de reservas
-	document.getElementById("submitBtn").addEventListener("click", () => {
-		const name = document.getElementById("name").value;
-		const date = document.getElementById("date").value;
-		const time = document.getElementById("time").value;
-
-		// Validar los campos del formulario
-		if (!name || !date || !time) {
-			alert("Please, complete all fields");
-			return;
-		}
-	});
-
-
-
+	// 	// Validar los campos del formulario
+	// 	if (!name || !date || !time) {
+	// 		alert("Please, complete all fields");
+	// 		return;
+	// 	}
+	// });
 
 	const aLinkWebsite = document.createElement("a");
 	aLinkWebsite.classList.add("website-button");
@@ -948,6 +948,23 @@ const setupEventListeners = () => {
 
 			displayInitialRestaurants();
 		});
+
+	document.body.addEventListener("click", function (e) {
+		if (
+			e.target.classList.contains("booking-btn") &&
+			e.target.dataset.restaurant
+		) {
+			const restaurantName = e.target.dataset.restaurant;
+			restaurantNameSpan.textContent = restaurantName;
+			formBookingContainer.style.display = "flex";
+			formBookingContainer.scrollIntoView();
+		}
+	});
+
+	formBooking.addEventListener("submit", function (e) {
+		e.preventDefault();
+		alert("Reserva realizada con éxito!");
+	});
 };
 
 // const searchAndFilter = (searchTerm) => {

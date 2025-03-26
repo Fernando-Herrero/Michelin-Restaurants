@@ -157,12 +157,21 @@
 
 			<div class="form-container-booking" id="formContainerBooking">
 				<h3>Reservar mesa</h3>
-				<div class="form-booking">
-					<input type="text" id="name" placeholder="Restaurant" required>
-					<input type="date" id="date" required>
-					<input type="time" id="time" required>
-					<button id="submitBtn">Confirmar Reserva</button>
-				</div>
+				<!-- Formulario de Reserva -->
+				<form id="formBooking">
+					<h4>Reservar en: <span id="restaurant-name"></span></h4>
+					
+					<label for="client-name" class="booking-label">Nombre:</label>
+					<input type="text" id="client-name" class="booking-input" required placeholder="Tu nombre">
+					
+					<label for="booking-date" class="booking-label">Fecha:</label>
+					<input type="date" id="booking-date" class="booking-input" required>
+					
+					<label for="booking-time" class="booking-label">Hora:</label>
+					<input type="time" id="booking-time" class="booking-input" required>
+					
+					<button type="submit" class="booking-form-btn" id="submitBtn">Confirmar Reserva</button>
+				</form>
 			</div>
 		</main>
 
