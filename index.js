@@ -949,7 +949,8 @@ const setupEventListeners = () => {
 			displayInitialRestaurants();
 		});
 
-	document.body.addEventListener("click", function (e) {
+	// Event Delegation (para botones dinámicos)
+	document.body.addEventListener("click", (e) => {
 		if (
 			e.target.classList.contains("booking-btn") &&
 			e.target.dataset.restaurant
@@ -957,11 +958,12 @@ const setupEventListeners = () => {
 			const restaurantName = e.target.dataset.restaurant;
 			restaurantNameSpan.textContent = restaurantName;
 			formBookingContainer.style.display = "flex";
-			formBookingContainer.scrollIntoView();
+			formBookingContainer.scrollIntoView({ behavior: "smooth" }); // Mejor con scroll suave
 		}
 	});
 
-	formBooking.addEventListener("submit", function (e) {
+	// Submit del formulario
+	formBooking.addEventListener("submit", (e) => {
 		e.preventDefault();
 		alert("Reserva realizada con éxito!");
 	});
