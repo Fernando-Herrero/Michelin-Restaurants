@@ -864,19 +864,47 @@ const setupEventListeners = () => {
 	});
 
 	//Ver mas restaurantes
-	document
-		.querySelector(".see-two-more")
-		.addEventListener("click", (event) => {
-			event.preventDefault();
-			displayAllTwoRestaurants();
-		});
+	document.querySelector(".see-two-more").addEventListener("click", (event) => {
+		event.preventDefault();
+
+		event.target.style.display = "none";
+
+		document.querySelector(".see-two-less").style.display = "inline";
+
+		displayAllTwoRestaurants();
+	});
+
+	document.querySelector(".see-two-less").addEventListener("click", (event) => {
+		event.preventDefault();
+
+		event.target.style.display = "none";
+
+		document.querySelector(".see-two-more").style.display = "inline";
+
+		displayInitialRestaurants();
+	});
 
 	document
 		.querySelector(".see-three-more")
 		.addEventListener("click", (event) => {
 			event.preventDefault();
+
+			event.target.style.display = "none";
+
+			document.querySelector(".see-three-less").style.display = "inline";
+
 			displayAllThreeRestaurants();
 		});
+
+	document.querySelector(".see-three-less").addEventListener("click", (event) => {
+		event.preventDefault();
+
+		event.target.style.display = "none";
+
+		document.querySelector(".see-three-more").style.display = "inline";
+
+		displayInitialRestaurants();
+	});
 };
 
 // const searchAndFilter = (searchTerm) => {
