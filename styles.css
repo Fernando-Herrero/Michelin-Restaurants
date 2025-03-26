@@ -450,6 +450,34 @@ a[href="#contact"] {
 	margin-bottom: -10px;
 }
 
+.booking-card {
+	display: none;
+}
+
+.booking-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 400px;
+    text-align: center;
+}
+
+#close-booking {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .footer {
 	display: flex;
 	flex-direction: column;

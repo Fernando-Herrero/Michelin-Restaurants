@@ -958,14 +958,30 @@ const setupEventListeners = () => {
 			const restaurantName = e.target.dataset.restaurant;
 			restaurantNameSpan.textContent = restaurantName;
 			formBookingContainer.style.display = "flex";
-			formBookingContainer.scrollIntoView({ behavior: "smooth" }); // Mejor con scroll suave
+			formBookingContainer.scrollIntoView();
 		}
 	});
 
 	// Submit del formulario
 	formBooking.addEventListener("submit", (e) => {
 		e.preventDefault();
-		alert("Reserva realizada con éxito!");
+
+		const nombre = document.getElementById("client-name").value;
+		const fecha = document.getElementById("booking-date").value;
+		const hora = document.getElementById("booking-time").value;
+		const restaurante = restaurantNameSpan.textContent;
+
+		document.getElementById("res-restaurant").textContent = restaurante;
+		document.getElementById("res-name").textContent = nombre;
+		document.getElementById("res-date").textContent = fecha;
+		document.getElementById("res-time").textContent = hora;
+
+		const tarjeta = document.getElementById("booking-confirmation");
+		tarjeta.style.display = "block";
+
+		document.getElementById("close-booking").addEventListener("click", () => {
+			tarjeta.style.display = "none";
+		});
 	});
 };
 
