@@ -438,7 +438,7 @@ const createContainerButton = (restaurant) => {
 	});
 
 	const bookingBtn = document.createElement("button");
-	bookingBtn.textContent = "Mesa";
+	bookingBtn.textContent = "Reservar";
 	bookingBtn.classList.add("booking-btn");
 
 
