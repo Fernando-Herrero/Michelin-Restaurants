@@ -934,9 +934,9 @@ const searchRestaurants = () => {
 
 	const filteredRestaurants = restaurants.filter(
 		(restaurant) =>
-			restaurant.nombre.toLowerCase().includes(searchTerm) ||
-			restaurant.localidad.toLowerCase().includes(searchTerm) ||
-			restaurant.cocina.toLowerCase().includes(searchTerm)
+			restaurant.nombre.toLowerCase().startsWith(searchTerm) ||
+			restaurant.localidad.toLowerCase().startsWith(searchTerm) ||
+			restaurant.cocina.toLowerCase().startsWith(searchTerm)
 	);
 
 	displayFilteredRestaurants(filteredRestaurants);
