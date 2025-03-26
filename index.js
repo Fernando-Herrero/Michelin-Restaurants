@@ -595,6 +595,17 @@ const renderUsers = () => {
 	}
 };
 
+const getVisibleRestaurantCount = () => {
+	const screenWidth = window.innerWidth;
+
+	if (screenWidth >= 1400) return 7;
+	if (screenWidth >= 1220) return 6;
+	if (screenWidth >= 1020) return 5;
+	if (screenWidth >= 800) return 4;
+	if (screenWidth >= 640) return 3;
+	return 2;
+};
+
 const displayInitialRestaurants = () => {
 	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
 	const threeStarsContainer = document.querySelector(
@@ -613,22 +624,34 @@ const displayInitialRestaurants = () => {
 		restaurant.favorito = favoriteIds.includes(restaurant.id);
 	});
 
-	const twoStarRestaurants = restaurants
+	// Usar el conteo dinámico
+	const visibleCount = getVisibleRestaurantCount();
+
+	restaurants
 		.filter((restaurant) => restaurant.estrellas === 2)
-		.slice(0, 6);
+		.slice(0, visibleCount)
+		.forEach((restaurant) => {
+			twoStarsContainer.appendChild(createRestaurantCard(restaurant));
+		});
 
-	twoStarRestaurants.forEach((restaurant) => {
-		twoStarsContainer.appendChild(createRestaurantCard(restaurant));
-	});
-
-	const threeStarRestaurants = restaurants
+	restaurants
 		.filter((restaurant) => restaurant.estrellas === 3)
-		.slice(0, 6);
-
-	threeStarRestaurants.forEach((restaurant) => {
-		threeStarsContainer.appendChild(createRestaurantCard(restaurant));
-	});
+		.slice(0, visibleCount)
+		.forEach((restaurant) => {
+			threeStarsContainer.appendChild(createRestaurantCard(restaurant));
+		});
 };
+
+// Escuchar cambios de tamaño (con debounce para mejor rendimiento)
+let resizeTimeout;
+window.addEventListener("resize", () => {
+	clearTimeout(resizeTimeout);
+	resizeTimeout = setTimeout(() => {
+		if (CURRENT_VIEW === "mainPage") {
+			displayInitialRestaurants();
+		}
+	}, 200); // Espera 200ms después del último resize
+});
 
 const displayAllTwoRestaurants = () => {
 	const twoStarsContainer = document.querySelector(".restaurants-two-stars");
@@ -896,15 +919,17 @@ const setupEventListeners = () => {
 			displayAllThreeRestaurants();
 		});
 
-	document.querySelector(".see-three-less").addEventListener("click", (event) => {
-		event.preventDefault();
+	document
+		.querySelector(".see-three-less")
+		.addEventListener("click", (event) => {
+			event.preventDefault();
 
-		event.target.style.display = "none";
+			event.target.style.display = "none";
 
-		document.querySelector(".see-three-more").style.display = "inline";
+			document.querySelector(".see-three-more").style.display = "inline";
 
-		displayInitialRestaurants();
-	});
+			displayInitialRestaurants();
+		});
 };
 
 // const searchAndFilter = (searchTerm) => {
