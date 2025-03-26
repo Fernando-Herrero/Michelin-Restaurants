@@ -480,14 +480,14 @@ const loadFavorites = () => {
 
 //funcion para recalcular favoritos y guardarlos en un boton que los muestre si los pulsamos
 const updateFavoritos = () => {
-	const saveFavorites = restaurants.filter((restaurant) => restaurant.favorito);
+	const favorites = restaurants.filter((restaurant) => restaurant.favorito);
 
-	localStorage.setItem("favoritos", JSON.stringify(saveFavorites));
+	localStorage.setItem("favoritos", JSON.stringify(favorites));
 
 	document.getElementById(
 		"favorite-button"
-	).textContent = `Favoritos: ${saveFavorites.length}`;
-	if (CURRENT_VIEW === "favoritePage") displayFilteredRestaurants(saveFavorites);
+	).textContent = `Favoritos: ${favorites.length}`;
+	if (CURRENT_VIEW === "favoritePage") displayFilteredRestaurants(favorites);
 };
 
 //para cada boton creamos el filtro necesario
@@ -505,10 +505,7 @@ const filterByLocality = (locality) => {
 	const filteredRestaurats = restaurants.filter((restaurant) =>
 		restaurant.localidad.toLowerCase().includes(parsedLocality)
 	);
-	// const filteredRestaurats = restaurants.filter(
-	// 	(restaurant) =>
-	// 		restaurant.localidad.toLowerCase() === locality.toLowerCase()
-	// );
+
 	displayFilteredRestaurants(filteredRestaurats);
 };
 
@@ -520,14 +517,6 @@ const filterByCousine = (cousine) => {
 	);
 	displayFilteredRestaurants(filteredRestaurants);
 };
-
-// //por cocina
-// const filterByCousine = (cousine) => {
-// 	const filteredRestaurats = restaurants.filter(
-// 		(restaurant) => restaurant.cocina.toLowerCase() === cousine.toLowerCase()
-// 	);
-// 	displayFilteredRestaurants(filteredRestaurats);
-// };
 
 //por precio
 const filterByPrice = (minPrice, maxPrice) => {
