@@ -368,6 +368,9 @@ let CURRENT_VIEW = "mainPage";
 let currentTwoStarState = 0;
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
+const searchButton = document.querySelector(".nav-search-btn");
+const searchInput = document.getElementById("search");
+
 //funcion para crear la imagen de la tarjeta
 const createRestaurantImage = (image, title) => {
 	const restaurantImage = document.createElement("img");
@@ -710,29 +713,6 @@ const initializeSelectors = () => {
 };
 
 const setupEventListeners = () => {
-	//Busqueda
-	const searchButton = document.querySelector(".nav-search-btn");
-	const searchInput = document.getElementById("search");
-
-	const searchRestaurants = () => {
-		const searchTerm = searchInput.value.toLowerCase().trim();
-
-		if (searchTerm === "") {
-			const containerFilters = document.querySelector(".container-cards");
-			containerFilters.innerHTML = "";
-			return;
-		}
-		//Quiero hacer que haya que escribir los nombres en orden. No se como
-		const filteredRestaurants = restaurants.filter(
-			(restaurant) =>
-				restaurant.nombre.toLocaleLowerCase().startsWith(searchTerm) ||
-				restaurant.localidad.toLowerCase().startsWith(searchTerm) ||
-				restaurant.cocina.toLowerCase().startsWith(searchTerm)
-		);
-
-		displayFilteredRestaurants(filteredRestaurants);
-	};
-
 	searchInput.addEventListener("input", searchRestaurants);
 
 	searchButton.addEventListener("click", searchRestaurants);
@@ -895,12 +875,78 @@ const setupEventListeners = () => {
 		});
 };
 
+// const searchAndFilter = (searchTerm) => {
+// 	if (!searchTerm.trim()) {
+// 		displayFilteredRestaurants([]); // Limpia resultados
+// 		return;
+// 	}
+
+// 	const filtered = restaurants.filter(
+// 		(r) =>
+// 			r.nombre.toLowerCase().startsWith(searchTerm) ||
+// 			r.localidad.toLowerCase().startsWith(searchTerm) ||
+// 			r.cocina.toLowerCase().startsWith(searchTerm)
+// 	);
+// 	displayFilteredRestaurants(filtered);
+// };
+
+//Busqueda
+const searchRestaurants = () => {
+	const searchTerm = searchInput.value.toLowerCase().trim();
+	localStorage.setItem("lastSearch", searchTerm);
+
+	if (!searchTerm) {
+		displayFilteredRestaurants(); // Vuelve a la vista inicial si no hay término
+		return;
+	}
+
+	const filteredRestaurants = restaurants.filter(
+		(restaurant) =>
+			restaurant.nombre.toLowerCase().includes(searchTerm) ||
+			restaurant.localidad.toLowerCase().includes(searchTerm) ||
+			restaurant.cocina.toLowerCase().includes(searchTerm)
+	);
+
+	displayFilteredRestaurants(filteredRestaurants);
+
+	// if (searchTerm === "") {
+	// 	const containerFilters = document.querySelector(".container-cards");
+	// 	containerFilters.innerHTML = "";
+	// 	return;
+	// }
+	// //Quiero hacer que haya que escribir los nombres en orden. No se como
+	// const filteredRestaurants = restaurants.filter(
+	// 	(restaurant) =>
+	// 		restaurant.nombre.toLocaleLowerCase().startsWith(searchTerm) ||
+	// 		restaurant.localidad.toLowerCase().startsWith(searchTerm) ||
+	// 		restaurant.cocina.toLowerCase().startsWith(searchTerm)
+	// );
+
+	// displayFilteredRestaurants(filteredRestaurants);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 	loadFavorites();
-	updateFavoritos();
-	displayInitialRestaurants();
 	initializeSelectors();
 	renderUsers();
 	setupEventListeners();
+
+	const saveSearch = localStorage.getItem("lastSearch");
+	if (saveSearch) {
+		searchInput.value = saveSearch;
+
+		const filteredRestaurants = restaurants.filter(
+			(restaurant) =>
+				restaurant.nombre.toLocaleLowerCase().startsWith(saveSearch) ||
+				restaurant.localidad.toLowerCase().startsWith(saveSearch) ||
+				restaurant.cocina.toLowerCase().startsWith(saveSearch)
+		);
+		displayFilteredRestaurants(filteredRestaurants);
+	} else {
+		displayFilteredRestaurants();
+	}
+
+	updateFavoritos();
+	displayInitialRestaurants();
 	displayFilteredRestaurants();
 });
