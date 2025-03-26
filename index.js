@@ -437,13 +437,17 @@ const createContainerButton = (restaurant) => {
 		displayInitialRestaurants();
 	});
 
+	const bookingBtn = document.createElement("button");
+	bookingBtn.textContent = "Mesa";
+	bookingBtn.classList.add("booking-btn");
+
 	const aLinkWebsite = document.createElement("a");
 	aLinkWebsite.classList.add("website-button");
 	aLinkWebsite.href = restaurant.url;
 	aLinkWebsite.target = "_blank";
 	aLinkWebsite.rel = "noopener noreferrer";
 	aLinkWebsite.textContent = "Ver mas";
-	container.append(favoriteButton, aLinkWebsite);
+	container.append(favoriteButton, bookingBtn, aLinkWebsite);
 
 	return container;
 };
