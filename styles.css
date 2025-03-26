@@ -406,6 +406,7 @@ a[href="#contact"] {
 	gap: 10px;
 	font-size: 18px;
 	border-radius: 8px;
+	padding: 6px;
 }
 
 .form-booking {
