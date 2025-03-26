@@ -865,14 +865,14 @@ const setupEventListeners = () => {
 
 	//Ver mas restaurantes
 	document
-		.querySelector(".link-plus-two-restaurants")
+		.querySelector(".see-two-more")
 		.addEventListener("click", (event) => {
 			event.preventDefault();
 			displayAllTwoRestaurants();
 		});
 
 	document
-		.querySelector(".link-plus-three-restaurants")
+		.querySelector(".see-three-more")
 		.addEventListener("click", (event) => {
 			event.preventDefault();
 			displayAllThreeRestaurants();

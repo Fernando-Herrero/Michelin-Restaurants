@@ -280,6 +280,14 @@ a[href="#contact"] {
 	font-size: 10px;
 }
 
+.see-two-less {
+	display: none;
+}
+
+.see-three-less {
+	display: none;
+}
+
 .form-one-star-container {
 	display: flex;
 	align-self: center;
