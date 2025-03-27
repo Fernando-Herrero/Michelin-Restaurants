@@ -378,6 +378,9 @@ const overlay = document.getElementById("booking-overlay");
 const bookingCard = document.getElementById("booking-confirmation");
 const closeButton = document.getElementById("close-booking");
 
+const toggleModeButton = document.getElementById("dark-mode-btn");
+const htmlElement = document.documentElement;
+
 //funcion para crear la imagen de la tarjeta
 const createRestaurantImage = (image, title) => {
 	const restaurantImage = document.createElement("img");
@@ -525,6 +528,7 @@ const filterByStars = (stars) => {
 		(restaurant) => restaurant.estrellas === stars
 	);
 	displayFilteredRestaurants(filteredRestaurats);
+	scrollToResults();
 };
 
 //por localidad
@@ -535,6 +539,7 @@ const filterByLocality = (locality) => {
 	);
 
 	displayFilteredRestaurants(filteredRestaurats);
+	scrollToResults();
 };
 
 //por cocina
@@ -544,6 +549,7 @@ const filterByCousine = (cousine) => {
 		restaurant.cocina.toLowerCase().includes(parsedCousine)
 	);
 	displayFilteredRestaurants(filteredRestaurants);
+	scrollToResults();
 };
 
 //por precio
@@ -556,6 +562,25 @@ const filterByPrice = (minPrice, maxPrice) => {
 			restaurant.precio >= minPrice && restaurant.precio <= maxPrice
 	);
 	displayFilteredRestaurants(filteredRestaurants);
+	scrollToResults();
+};
+
+const scrollToResults = () => {
+	const resultsContainer = document.getElementById("show-cards");
+
+	if (resultsContainer) {
+		setTimeout(() => {
+			resultsContainer.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
+
+			// Efecto visual de highlight
+			resultsContainer.style.animation = "none";
+			void resultsContainer.offsetWidth;
+			resultsContainer.style.animation = "highlight 1.5s ease";
+		}, 100);
+	}
 };
 
 //funcion para filtar los restaurantes
@@ -759,6 +784,34 @@ const initializeSelectors = () => {
 	});
 };
 
+const toggleDarkMode = () => {
+	if (htmlElement.getAttribute("data-theme") === "dark") {
+		htmlElement.removeAttribute("data-theme");
+		localStorage.setItem("theme", "light");
+		toggleModeButton.textContent = "🌙";
+	} else {
+		htmlElement.setAttribute("data-theme", "dark");
+		localStorage.setItem("theme", "dark");
+		toggleModeButton.textContent = "🌞";
+	}
+};
+
+const loadTheme = () => {
+	const savedTheme =
+		localStorage.getItem("theme") ||
+		(window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light");
+
+	if (savedTheme === "dark") {
+		htmlElement.setAttribute("data-theme", "dark");
+		toggleModeButton.textContent = "🌞";
+	} else {
+		htmlElement.removeAttribute("data-theme");
+		toggleModeButton.textContent = "🌙";
+	}
+};
+
 const setupEventListeners = () => {
 	searchInput.addEventListener("input", searchRestaurants);
 
@@ -803,6 +856,7 @@ const setupEventListeners = () => {
 				(restaurant) => restaurant.favorito
 			);
 			displayFilteredRestaurants(favoriteRestaurants);
+			scrollToResults();
 		}
 		displayInitialRestaurants();
 	});
@@ -874,21 +928,7 @@ const setupEventListeners = () => {
 	}
 
 	//Modo oscuro
-	const toggleModeButton = document.getElementById("dark-mode-btn");
-	const body = document.body;
-
-	// Función para cambiar entre modo claro y oscuro
-	toggleModeButton.addEventListener("click", () => {
-		if (body.classList.contains("light-mode")) {
-			body.classList.remove("light-mode");
-			body.classList.add("dark-mode");
-			toggleModeButton.textContent = "🌞"; // Cambiar ícono a sol
-		} else {
-			body.classList.remove("dark-mode");
-			body.classList.add("light-mode");
-			toggleModeButton.textContent = "🌙"; // Cambiar ícono a luna
-		}
-	});
+	toggleModeButton.addEventListener("click", toggleDarkMode);
 
 	//Boton reset
 	const containerFilters = document.querySelector(".btn-filters");
@@ -1024,24 +1064,11 @@ const searchRestaurants = () => {
 	);
 
 	displayFilteredRestaurants(filteredRestaurants);
-
-	// if (searchTerm === "") {
-	// 	const containerFilters = document.querySelector(".container-cards");
-	// 	containerFilters.innerHTML = "";
-	// 	return;
-	// }
-	// //Quiero hacer que haya que escribir los nombres en orden. No se como
-	// const filteredRestaurants = restaurants.filter(
-	// 	(restaurant) =>
-	// 		restaurant.nombre.toLocaleLowerCase().startsWith(searchTerm) ||
-	// 		restaurant.localidad.toLowerCase().startsWith(searchTerm) ||
-	// 		restaurant.cocina.toLowerCase().startsWith(searchTerm)
-	// );
-
-	// displayFilteredRestaurants(filteredRestaurants);
+	scrollToResults();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	loadTheme();
 	loadFavorites();
 	initializeSelectors();
 	renderUsers();

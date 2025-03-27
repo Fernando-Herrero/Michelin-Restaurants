@@ -15,6 +15,7 @@ body {
 	scroll-behavior: smooth;
 	margin: 0;
 	padding: 0;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -331,7 +332,6 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	color: var(--text-color);
 }
 
 #favorite-button:hover {
@@ -400,6 +400,24 @@ body {
 }
 
 /* ===== TARJETAS DE RESTAURANTES ===== */
+.restaurants-container,
+.container-cards {
+	scroll-margin-top: 200px;
+}
+
+/* Efecto de highlight */
+@keyframes highlight {
+	0% {
+		background-color: transparent;
+	}
+	20% {
+		background-color: rgba(169, 29, 43, 0.2);
+	}
+	100% {
+		background-color: transparent;
+	}
+}
+
 .container-cards {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -959,4 +977,63 @@ body {
 #contact h4:hover {
 	opacity: 0.9;
 	cursor: pointer;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+	--primary-color: #5a1a5a;
+	--primary-color-dark: #6b256b;
+	--accent-color: #c92d3b;
+	--accent-light: #e03d4d;
+	--danger-color: #ff5c4d;
+	--danger-hover: #ff3b2b;
+	--warning-color: #ffeb3b;
+	--warning-hover: #fdd835;
+}
+
+[data-theme="dark"] .nav-logo img {
+	filter: brightness(0.9);
+}
+
+[data-theme="dark"] #dark-mode-btn {
+	border-color: var(--text-light-color);
+}
+
+[data-theme="dark"] .search {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23b0b0b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>');
+}
+
+[data-theme="dark"] .card-restaurant:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .one-star-images img {
+	filter: brightness(0.85);
+}
+
+[data-theme="dark"] .one-star-images img:hover {
+	filter: brightness(0.95);
+}
+
+[data-theme="dark"] .favorite-btn {
+	background-color: var(--input-bg);
+	color: var(--text-color);
+}
+
+[data-theme="dark"] .favorited-btn {
+	background-color: var(--danger-color);
+	color: white;
+}
+
+[data-theme="dark"] .card-restaurant,
+[data-theme="dark"] .form-container,
+[data-theme="dark"] .booking-card {
+	transition: all var(--transition-normal);
+}
+
+[data-theme="dark"] .nav-search-btn:hover,
+[data-theme="dark"] #btn-login:hover,
+[data-theme="dark"] .booking-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

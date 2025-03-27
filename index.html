@@ -43,22 +43,22 @@
 			</nav>
 			<section class="filters-container container">
 				<div class="btn-filters">
-					<button id="two-stars">
+					<button id="two-stars" data-target="#show-cards">
 						<img
 							src="/media/dos-estrellas-michelin.jpg"
 							alt="icono dos estrellas"
 						/>
 					</button>
-					<button id="three-stars">
+					<button id="three-stars" data-target="#show-cards">
 						<img
 							src="/media/tres-estrellas-michelin.jpg"
 							alt="icono tres estrellas"
 						/>
 					</button>
-					<select name="locality-selector" id="locality-selector"></select>
-					<select name="cousine-selector" id="cousine-selector"></select>
-					<select name="price-selector" id="price-selector"></select>
-					<button id="favorite-button">
+					<select name="locality-selector" id="locality-selector" data-target="#show-cards"></select>
+					<select name="cousine-selector" id="cousine-selector" data-target="#show-cards"></select>
+					<select name="price-selector" id="price-selector" data-target="#show-cards"></select>
+					<button id="favorite-button" data-target="#show-cards">
 						Favoritos:
 						<span>0</span>
 					</button>
@@ -67,7 +67,7 @@
 		</header>
 
 		<main class="main-container container">
-			<div class="container-cards"></div>
+			<div id="show-cards" class="container-cards"></div>
 			<h1>RESTAURANTS STAR MICHELIN 2025</h1>
 			<section class="restaurants-container">
 				<div class="restaurant-title-anchor">
