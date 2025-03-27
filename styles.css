@@ -231,6 +231,15 @@ a[href="#contact"] {
     object-fit: cover;
     border-radius: 0;
     transition: transform 0.3s ease;
+
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .card-restaurant:hover img {
@@ -310,7 +319,7 @@ a[href="#contact"] {
 }
 
 /* Añadir un pequeño badge para destacar cosas */
-/* .card-badge {
+.card-badge {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -320,7 +329,24 @@ a[href="#contact"] {
     border-radius: 10px;
     font-size: 10px;
     font-weight: bold;
-} */
+}
+
+.card-restaurant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.card-restaurant:hover::before {
+    opacity: 1;
+}
 
 .container-button a {
 	font-size: 10px;
