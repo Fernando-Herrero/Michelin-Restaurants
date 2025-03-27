@@ -27,7 +27,12 @@
 					/>
 				</div>
 				<div class="search-bar">
-					<input type="text" id="search" class="search" placeholder="Search restaurants" />
+					<input
+						type="text"
+						id="search"
+						class="search"
+						placeholder="Search restaurants"
+					/>
 					<button class="nav-search-btn">Search</button>
 				</div>
 				<div class="nav-buttons">
@@ -105,18 +110,40 @@
 					<h3>Register</h3>
 					<div class="form-section">
 						<form id="form">
-							<label for="name">Name:</label>
-							<input type="text" id="name" name="name" required />
-
-							<label for="email">Email:</label>
-							<input type="email" id="email" name="email" required />
-
-							<div style="display: flex; gap: 14px">
-								<input type="checkbox" id="policy" name="policy" />
-								<label for="policy">I accept the privacy policy</label>
+							<div class="form-group">
+								<label for="name">Name:</label>
+								<input
+									type="text"
+									id="name"
+									name="name"
+									required
+									placeholder="Enter your full name"
+								/>
 							</div>
 
-							<button type="submit" id="send">Send</button>
+							<div class="form-group">
+								<label for="email">Email:</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									required
+									placeholder="your.email@example.com"
+								/>
+							</div>
+
+							<div class="checkbox-group">
+								<input type="checkbox" id="policy" name="policy" required />
+								<label for="policy">
+									I accept the
+									<a href="#" class="policy-link">privacy policy</a>
+								</label>
+							</div>
+
+							<button type="submit" id="send" class="submit-btn">
+								<span class="btn-text">Send</span>
+								<span class="btn-icon">→</span>
+							</button>
 						</form>
 					</div>
 				</section>
@@ -159,18 +186,29 @@
 				<h3>Reservar mesa</h3>
 				<!-- Formulario de Reserva -->
 				<form id="formBooking">
-					<h4>Reservar en: <span id="restaurant-name"></span></h4>
-					
+					<h4>
+						Reservar en:
+						<span id="restaurant-name"></span>
+					</h4>
+
 					<label for="client-name" class="booking-label">Nombre:</label>
-					<input type="text" id="client-name" class="booking-input" required placeholder="Tu nombre">
-					
+					<input
+						type="text"
+						id="client-name"
+						class="booking-input"
+						required
+						placeholder="Tu nombre"
+					/>
+
 					<label for="booking-date" class="booking-label">Fecha:</label>
-					<input type="date" id="booking-date" class="booking-input" required>
-					
+					<input type="date" id="booking-date" class="booking-input" required />
+
 					<label for="booking-time" class="booking-label">Hora:</label>
-					<input type="time" id="booking-time" class="booking-input" required>
-					
-					<button type="submit" class="booking-form-btn" id="submitBtn">Confirmar Reserva</button>
+					<input type="time" id="booking-time" class="booking-input" required />
+
+					<button type="submit" class="booking-form-btn" id="submitBtn">
+						Confirmar Reserva
+					</button>
 				</form>
 			</div>
 		</main>
@@ -189,10 +227,22 @@
 
 		<div id="booking-confirmation" class="booking-card">
 			<h3>✅ Reserva confirmada</h3>
-			<p><strong>Restaurante:</strong> <span id="res-restaurant"></span></p>
-			<p><strong>Nombre:</strong> <span id="res-name"></span></p>
-			<p><strong>Fecha:</strong> <span id="res-date"></span></p>
-			<p><strong>Hora:</strong> <span id="res-time"></span></p>
+			<p>
+				<strong>Restaurante:</strong>
+				<span id="res-restaurant"></span>
+			</p>
+			<p>
+				<strong>Nombre:</strong>
+				<span id="res-name"></span>
+			</p>
+			<p>
+				<strong>Fecha:</strong>
+				<span id="res-date"></span>
+			</p>
+			<p>
+				<strong>Hora:</strong>
+				<span id="res-time"></span>
+			</p>
 			<button id="close-booking">Cerrar</button>
 		</div>
 	</body>
