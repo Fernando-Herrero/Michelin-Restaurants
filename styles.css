@@ -115,7 +115,6 @@ body {
 	flex-direction: column;
 	gap: 25px;
 	padding: 20px 0;
-	background-color: var(--header-bg);
 	box-shadow: var(--header-shadow);
 	position: sticky;
 	top: 0;
@@ -268,8 +267,6 @@ body {
 /* ===== FILTROS ===== */
 .filters-container {
 	padding: 0 20px;
-	backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn-filters {
