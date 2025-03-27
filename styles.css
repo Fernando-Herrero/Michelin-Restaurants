@@ -511,6 +511,10 @@ body {
 	margin-top: 10px;
 }
 
+.container-button a {
+	font-size: 12px;
+}
+
 .favorite-btn,
 .booking-btn {
 	padding: 6px 12px;
