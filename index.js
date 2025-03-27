@@ -619,12 +619,11 @@ const renderUsers = () => {
 const getVisibleRestaurantCount = () => {
 	const screenWidth = window.innerWidth;
 
-	if (screenWidth >= 1400) return 7;
-	if (screenWidth >= 1220) return 6;
-	if (screenWidth >= 1020) return 5;
-	if (screenWidth >= 800) return 4;
-	if (screenWidth >= 640) return 3;
-	return 2;
+	if (screenWidth >= 1350) return 5;
+	if (screenWidth >= 1100) return 4;
+	if (screenWidth >= 840) return 3;
+	if (screenWidth >= 580) return 2;
+	return 1;
 };
 
 const displayInitialRestaurants = () => {
