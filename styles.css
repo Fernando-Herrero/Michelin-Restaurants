@@ -120,6 +120,8 @@ body {
 	position: sticky;
 	top: 0;
 	z-index: 1000;
+	backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-bar-container {
@@ -168,6 +170,8 @@ body {
 	background-position: 15px center;
 	background-size: 16px;
 	transition: all var(--transition-normal);
+	backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .search:focus {
@@ -222,9 +226,10 @@ body {
 }
 
 #btn-contact {
-	background-color: var(--card-bg);
 	border: 1px solid var(--border-color);
 	color: var(--text-color);
+	backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 #btn-contact a {
@@ -263,7 +268,8 @@ body {
 /* ===== FILTROS ===== */
 .filters-container {
 	padding: 0 20px;
-	background-color: var(--header-bg);
+	backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn-filters {
