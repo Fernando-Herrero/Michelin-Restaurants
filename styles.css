@@ -387,13 +387,15 @@ body {
 	border-radius: 100px;
 }
 
-.link-plus-three-restaurants, .link-plus-two-restaurants {
+.link-plus-three-restaurants,
+.link-plus-two-restaurants {
 	font-size: 14px;
 	text-decoration: underline;
 	color: var(--text-secondary-color);
 }
 
-.see-two-less, .see-three-less {
+.see-two-less,
+.see-three-less {
 	display: none;
 }
 
@@ -923,22 +925,38 @@ body {
 
 /* ===== FOOTER ===== */
 .footer {
+	--footer-padding: 1.5rem;
+	--footer-gap: 1rem;
+
 	display: flex;
 	flex-direction: column;
-	gap: 18px;
-	font-size: 18px;
+	gap: var(--footer-gap);
 	background-color: var(--accent-color);
-	padding: 20px;
+	padding: var(--footer-padding);
 	color: white;
+	text-align: center;
+	border-top: 3px solid var(--accent-light);
 }
 
 .info-btn-footer {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 }
 
-footer h4 {
-	display: flex;
-	justify-content: center;
-	color: white;
+.footer h4 {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+#contact h4 {
+	transition: opacity 0.3s ease;
+}
+
+#contact h4:hover {
+	opacity: 0.9;
+	cursor: pointer;
 }
