@@ -622,7 +622,7 @@ const getVisibleRestaurantCount = () => {
 	if (screenWidth >= 1350) return 5;
 	if (screenWidth >= 1100) return 4;
 	if (screenWidth >= 840) return 3;
-	if (screenWidth >= 580) return 2;
+	if (screenWidth >= 550) return 2;
 	return 1;
 };
 
@@ -896,6 +896,7 @@ const setupEventListeners = () => {
 	const containerCards = document.querySelector(".container-cards");
 
 	const buttonReset = document.createElement("button");
+	buttonReset.classList.add("reset-btn");
 	buttonReset.textContent = "Reset";
 
 	containerFilters.appendChild(buttonReset);
