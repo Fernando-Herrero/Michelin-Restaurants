@@ -1047,13 +1047,16 @@ body {
 
 /* Estilo para el formulario de login */
 .login-form-container {
-    display: none; 
+    display: flex; 
+	justify-content: center;
     position: absolute;
+	top: 50%;
+    left: 40%;
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 490px;
     text-align: center;
 }
 
@@ -1076,11 +1079,11 @@ body {
 }
 
 .login-form button {
-    padding: 10px 20px;
+    padding: 16px 24px;
     background-color: var(--success-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s;
 }
