@@ -883,21 +883,21 @@ const setupEventListeners = () => {
 		});
 
 	//Login
-	document.getElementById("btn-login").addEventListener("click", () => {
-		const email = prompt("Enter your email:");
-		if (email) {
-			const password = prompt("Enter your password");
+	// document.getElementById("btn-login").addEventListener("click", () => {
+	// 	const email = prompt("Enter your email:");
+	// 	if (email) {
+	// 		const password = prompt("Enter your password");
 
-			if (password) {
-				console.log("Email", email);
-				console.log("Password", password);
-			} else {
-				console.log("The password was not entered");
-			}
-		} else {
-			console.log("The email was not entered");
-		}
-	});
+	// 		if (password) {
+	// 			console.log("Email", email);
+	// 			console.log("Password", password);
+	// 		} else {
+	// 			console.log("The password was not entered");
+	// 		}
+	// 	} else {
+	// 		console.log("The email was not entered");
+	// 	}
+	// });
 
 	//Formulario
 	const form = document.getElementById("form");
@@ -1093,4 +1093,33 @@ document.addEventListener("DOMContentLoaded", () => {
 	updateFavoritos();
 	displayInitialRestaurants();
 	displayFilteredRestaurants();
+});
+
+//Login
+const btnLogin = document.getElementById('btn-login');
+const loginFormContainer = document.getElementById('login-form-container');
+const loginForm = document.getElementById('login-form');
+
+
+btnLogin.addEventListener('click', () => {
+    loginFormContainer.style.display = 'flex'; // Mostrar el formulario de login
+});
+
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault(); 
+
+    const email = document.getElementById('email-login').value;
+    const password = document.getElementById('password-login').value;
+
+    if (email && password) {
+        alert('¡Enjoy the gastronomy!');
+        console.log('Email:', email);
+        console.log('Password:', password);
+
+        // Ocultar el formulario
+        loginFormContainer.style.display = 'none';
+    } else {
+        alert('Please enter both fields');
+    }
 });
