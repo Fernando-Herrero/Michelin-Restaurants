@@ -1092,6 +1092,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		displayFilteredRestaurants();
 	}
 
+	const isLogin = localStorage.getItem("loginOpen") === 'true';
+	if (isLogin) {
+		loginFormContainer.style.display = "flex";
+		overlay.style.display = "block";
+		document.getElementById("email-login").focus();
+	}
+
 	updateFavoritos();
 	displayInitialRestaurants();
 	displayFilteredRestaurants();
@@ -1105,12 +1112,14 @@ const loginForm = document.getElementById("login-form");
 btnLogin.addEventListener("click", (e) => {
 	e.stopPropagation();
 
-	if (loginFormContainer.style.display === "flex") {
-		loginFormContainer.style.display = "none";
-		overlay.style.display = "none";
-	} else {
-		loginFormContainer.style.display = "flex";
-		overlay.style.display = "block";
+	const isOpening = loginFormContainer.style.display !== "flex";
+
+	loginFormContainer.style.display = isOpening ? "flex" : "none";
+	overlay.style.display = isOpening ? "block" : "none";
+
+	localStorage.setItem("loginOpen", isOpening.toString());//es un boolenno, no seria necesario JSON
+
+	if (isOpening) {
 		document.getElementById("email-login").focus();
 	}
 });
@@ -1118,6 +1127,7 @@ btnLogin.addEventListener("click", (e) => {
 overlay.addEventListener("click", () => {
 	loginFormContainer.style.display = "none";
 	overlay.style.display = "none";
+	localStorage.setItem('loginOpen', 'false');//lo pasamos directamente como un string
 });
 
 // Evitar que se cierre al hacer clic dentro del formulario(buena practica)
@@ -1133,10 +1143,12 @@ loginForm.addEventListener("submit", (e) => {
 
 	if (email && password) {
 		alert("¡Enjoy the gastronomy!");
-		console.log("Email:", email);
-		console.log("Password:", password);
-
 		loginFormContainer.style.display = "none";
+		overlay,style.display = "none";
+		localStorage.setItem('loginOpen', 'false');
+		
+		document.getElementById("email-login").value = '';
+		document.getElementById("password-login").value = '';
 	} else {
 		alert("Please enter both fields");
 	}
