@@ -1047,7 +1047,7 @@ body {
 
 /* Estilo para el formulario de login */
 .login-form-container {
-    display: flex; 
+    display: none; 
 	justify-content: center;
     position: absolute;
 	top: 50%;
