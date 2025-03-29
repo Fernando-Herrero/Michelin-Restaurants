@@ -139,6 +139,11 @@
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto;
 	}
+
+	.login-form-container {
+		padding: 1rem;
+		width: 80%;
+	}
 }
 
 @media (min-width: 481px) and (max-width: 740px) {
@@ -168,7 +173,6 @@
 }
 
 @media (min-width: 741px) and (max-width: 1024px) {
-
 	.nav-bar-container {
 		display: flex;
 		justify-content: space-between;
