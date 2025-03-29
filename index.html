@@ -1,249 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="shortcut icon"
-			href="/media/logo-estrellas-michelin.jpeg"
-			type="#"
-		/>
-		<script src="index.js" defer></script>
-		<link rel="stylesheet" href="styles.css" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-		/>
-		<title>Michelin Restaurants</title>
-	</head>
 
-	<body>
-		<header class="header">
-			<nav class="nav-bar-container container">
-				<div class="nav-logo">
-					<img
-						src="/media/logo-estrellas-michelin.jpeg"
-						alt="Logotipo de estrellas Michelin"
-					/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="/media/logo-estrellas-michelin.jpeg" type="#" />
+	<script src="index.js" defer></script>
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+	<title>Michelin Restaurants</title>
+</head>
+
+<body>
+	<header class="header">
+		<nav class="nav-bar-container container">
+			<div class="nav-logo">
+				<img src="/media/logo-estrellas-michelin.jpeg" alt="Logotipo de estrellas Michelin" />
+			</div>
+			<div class="search-bar">
+				<input type="text" id="search" class="search" placeholder="Search restaurants" />
+				<button class="nav-search-btn">Search</button>
+			</div>
+			<div class="nav-buttons">
+				<button id="btn-login"><a href="#login-form-container">Log in</a></button>
+				<button id="btn-contact"><a href="#contact">Contact</a></button>
+				<button id="dark-mode-btn">🌙</button>
+			</div>
+		</nav>
+		<section class="filters-container container">
+			<div class="btn-filters">
+				<button id="two-stars" data-target="#show-cards">
+					<img src="/media/dos-estrellas-michelin.jpg" alt="icono dos estrellas" />
+				</button>
+				<button id="three-stars" data-target="#show-cards">
+					<img src="/media/tres-estrellas-michelin.jpg" alt="icono tres estrellas" />
+				</button>
+				<select name="locality-selector" id="locality-selector" data-target="#show-cards"></select>
+				<select name="cousine-selector" id="cousine-selector" data-target="#show-cards"></select>
+				<select name="price-selector" id="price-selector" data-target="#show-cards"></select>
+				<button id="favorite-button" data-target="#show-cards">
+					Favoritos:
+					<span>0</span>
+				</button>
+			</div>
+		</section>
+	</header>
+
+	<main class="main-container container">
+		<div id="show-cards" class="container-cards"></div>
+		<h1>RESTAURANTS STAR MICHELIN 2025</h1>
+		<section class="restaurants-container">
+			<div class="restaurant-title-anchor">
+				<div class="img-title-restaurants">
+					<img src="/media/dos-estrellas-michelin.jpg" alt="logo dos estrellas Michelin" />
+					<h2>Restaurants</h2>
 				</div>
-				<div class="search-bar">
-					<input
-						type="text"
-						id="search"
-						class="search"
-						placeholder="Search restaurants"
-					/>
-					<button class="nav-search-btn">Search</button>
+				<div class="link-plus-two-restaurants">
+					<a href="#" class="see-two-more">See more</a>
+					<a href="#" class="see-two-less">See less</a>
 				</div>
-				<div class="nav-buttons">
-					<button id="btn-login">Log in</button>
-					<button id="btn-contact"><a href="#contact">Contact</a></button>
-					<button id="dark-mode-btn">🌙</button>
+			</div>
+
+			<div class="restaurants-two-stars container-cards"></div>
+		</section>
+
+		<section class="restaurants-container">
+			<div class="restaurant-title-anchor">
+				<div class="img-title-restaurants">
+					<img src="/media/tres-estrellas-michelin.jpg" alt="logo tres estrellas Michelin" />
+					<h2>Restaurants</h2>
 				</div>
-			</nav>
-			<section class="filters-container container">
-				<div class="btn-filters">
-					<button id="two-stars" data-target="#show-cards">
-						<img
-							src="/media/dos-estrellas-michelin.jpg"
-							alt="icono dos estrellas"
-						/>
-					</button>
-					<button id="three-stars" data-target="#show-cards">
-						<img
-							src="/media/tres-estrellas-michelin.jpg"
-							alt="icono tres estrellas"
-						/>
-					</button>
-					<select name="locality-selector" id="locality-selector" data-target="#show-cards"></select>
-					<select name="cousine-selector" id="cousine-selector" data-target="#show-cards"></select>
-					<select name="price-selector" id="price-selector" data-target="#show-cards"></select>
-					<button id="favorite-button" data-target="#show-cards">
-						Favoritos:
-						<span>0</span>
-					</button>
+				<div class="link-plus-three-restaurants">
+					<a href="#" class="see-three-more">See more</a>
+					<a href="#" class="see-three-less">See less</a>
+				</div>
+			</div>
+
+			<div class="restaurants-three-stars container-cards"></div>
+		</section>
+
+		<div class="form-one-star-container">
+			<section id="form-container" class="form-container">
+				<h3>Register</h3>
+				<div class="form-section">
+					<form id="form">
+						<div class="form-group">
+							<label for="name">Name:</label>
+							<input type="text" id="name" name="name" required placeholder="Enter your full name" />
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email:</label>
+							<input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+						</div>
+
+						<div class="checkbox-group">
+							<input type="checkbox" id="policy" name="policy" required />
+							<label for="policy">
+								I accept the
+								<a href="#" class="policy-link">privacy policy</a>
+							</label>
+						</div>
+
+						<button type="submit" id="send" class="submit-btn">
+							<span class="btn-text">Send</span>
+							<span class="btn-icon">→</span>
+						</button>
+					</form>
 				</div>
 			</section>
-		</header>
 
-		<main class="main-container container">
-			<div id="show-cards" class="container-cards"></div>
-			<h1>RESTAURANTS STAR MICHELIN 2025</h1>
-			<section class="restaurants-container">
-				<div class="restaurant-title-anchor">
-					<div class="img-title-restaurants">
-						<img
-							src="/media/dos-estrellas-michelin.jpg"
-							alt="logo dos estrellas Michelin"
-						/>
-						<h2>Restaurants</h2>
-					</div>
-					<div class="link-plus-two-restaurants">
-						<a href="#" class="see-two-more">See more</a>
-						<a href="#" class="see-two-less">See less</a>
-					</div>
+			<section id="oneStar-container" class="one-star-container">
+				<div class="one-star">
+					<a class="one-star-images" href="https://guide.michelin.com/es/es/restaurantes/1-estrella-michelin"
+						target="_blank">
+						<img class="pic-1" src="/media/una-estrella-michelin.png" alt="Logo Michelin one star" />
+						<img class="pic-2" src="/media/una-estrella-restaurante.jpg"
+							alt="Restaurant Michelin one star" />
+						<img class="pic-3" src="/media/una-estrella-restaurante-2.jpg"
+							alt="Restaurant Michelin one star" />
+						<img class="pic-4" src="/media/una-estrella-restaurante-3.jpg"
+							alt="Restaurant Michelin one star" />
+					</a>
 				</div>
-
-				<div class="restaurants-two-stars container-cards"></div>
 			</section>
-
-			<section class="restaurants-container">
-				<div class="restaurant-title-anchor">
-					<div class="img-title-restaurants">
-						<img
-							src="/media/tres-estrellas-michelin.jpg"
-							alt="logo tres estrellas Michelin"
-						/>
-						<h2>Restaurants</h2>
-					</div>
-					<div class="link-plus-three-restaurants">
-						<a href="#" class="see-three-more">See more</a>
-						<a href="#" class="see-three-less">See less</a>
-					</div>
-				</div>
-
-				<div class="restaurants-three-stars container-cards"></div>
-			</section>
-
-			<div class="form-one-star-container">
-				<section id="form-container" class="form-container">
-					<h3>Register</h3>
-					<div class="form-section">
-						<form id="form">
-							<div class="form-group">
-								<label for="name">Name:</label>
-								<input
-									type="text"
-									id="name"
-									name="name"
-									required
-									placeholder="Enter your full name"
-								/>
-							</div>
-
-							<div class="form-group">
-								<label for="email">Email:</label>
-								<input
-									type="email"
-									id="email"
-									name="email"
-									required
-									placeholder="your.email@example.com"
-								/>
-							</div>
-
-							<div class="checkbox-group">
-								<input type="checkbox" id="policy" name="policy" required />
-								<label for="policy">
-									I accept the
-									<a href="#" class="policy-link">privacy policy</a>
-								</label>
-							</div>
-
-							<button type="submit" id="send" class="submit-btn">
-								<span class="btn-text">Send</span>
-								<span class="btn-icon">→</span>
-							</button>
-						</form>
-					</div>
-				</section>
-
-				<section id="oneStar-container" class="one-star-container">
-					<div class="one-star">
-						<a
-							class="one-star-images"
-							href="https://guide.michelin.com/es/es/restaurantes/1-estrella-michelin"
-							target="_blank"
-						>
-							<img
-								class="pic-1"
-								src="/media/una-estrella-michelin.png"
-								alt="Logo Michelin one star"
-							/>
-							<img
-								class="pic-2"
-								src="/media/una-estrella-restaurante.jpg"
-								alt="Restaurant Michelin one star"
-							/>
-							<img
-								class="pic-3"
-								src="/media/una-estrella-restaurante-2.jpg"
-								alt="Restaurant Michelin one star"
-							/>
-							<img
-								class="pic-4"
-								src="/media/una-estrella-restaurante-3.jpg"
-								alt="Restaurant Michelin one star"
-							/>
-						</a>
-					</div>
-				</section>
-			</div>
-
-			<div id="user-list" class="user-list"></div>
-
-			<div class="form-container-booking" id="formContainerBooking">
-				<h3>Reservar mesa</h3>
-				<!-- Formulario de Reserva -->
-				<form id="formBooking">
-					<h4>
-						Reservar en:
-						<span id="restaurant-name"></span>
-					</h4>
-
-					<label for="client-name" class="booking-label">Nombre:</label>
-					<input
-						type="text"
-						id="client-name"
-						class="booking-input"
-						required
-						placeholder="Tu nombre"
-					/>
-
-					<label for="booking-date" class="booking-label">Fecha:</label>
-					<input type="date" id="booking-date" class="booking-input" required />
-
-					<label for="booking-time" class="booking-label">Hora:</label>
-					<input type="time" id="booking-time" class="booking-input" required />
-
-					<button type="submit" class="booking-form-btn" id="submitBtn">
-						Confirmar Reserva
-					</button>
-				</form>
-			</div>
-		</main>
-
-		<footer class="footer container">
-			<div id="contact" class="info-btn-footer">
-				<h4>Contact: 600000000 - michelin@restaurant.com</h4>
-			</div>
-
-			<div>
-				<h4>Estrella Michelin @2025</h4>
-			</div>
-		</footer>
-
-		<div id="booking-overlay" class="booking-overlay"></div>
-
-		<div id="booking-confirmation" class="booking-card">
-			<h3>✅ Reserva confirmada</h3>
-			<p>
-				<strong>Restaurante:</strong>
-				<span id="res-restaurant"></span>
-			</p>
-			<p>
-				<strong>Nombre:</strong>
-				<span id="res-name"></span>
-			</p>
-			<p>
-				<strong>Fecha:</strong>
-				<span id="res-date"></span>
-			</p>
-			<p>
-				<strong>Hora:</strong>
-				<span id="res-time"></span>
-			</p>
-			<button id="close-booking">Cerrar</button>
 		</div>
-	</body>
+
+		<div id="user-list" class="user-list"></div>
+
+		<div class="form-container-booking" id="formContainerBooking">
+			<h3>Reservar mesa</h3>
+			<!-- Formulario de Reserva -->
+			<form id="formBooking">
+				<h4>
+					Reservar en:
+					<span id="restaurant-name"></span>
+				</h4>
+
+				<label for="client-name" class="booking-label">Nombre:</label>
+				<input type="text" id="client-name" class="booking-input" required placeholder="Tu nombre" />
+
+				<label for="booking-date" class="booking-label">Fecha:</label>
+				<input type="date" id="booking-date" class="booking-input" required />
+
+				<label for="booking-time" class="booking-label">Hora:</label>
+				<input type="time" id="booking-time" class="booking-input" required />
+
+				<button type="submit" class="booking-form-btn" id="submitBtn">
+					Confirmar Reserva
+				</button>
+			</form>
+		</div>
+
+		<!-- Formulario de log in -->
+		<div id="login-form-container" class="login-form-container">>
+			<form id="login-form" class="login-form">
+				<h2>Login</h2>
+				<label for="email-login" id="login-label">Email:</label>
+				<input type="email" id="email-login" name="email" required placeholder="Enter your email">
+				<label for="password">Contraseña:</label>
+				<input type="password" id="password-login" name="password" required placeholder="Enter your password">
+				<button type="submit" class="btn-login-form">Entrar</button>
+			</form>
+		</div>
+	</main>
+
+	<footer class="footer container">
+		<div id="contact" class="info-btn-footer">
+			<h4>Contact: 600000000 - michelin@restaurant.com</h4>
+		</div>
+
+		<div>
+			<h4>Estrella Michelin @2025</h4>
+		</div>
+	</footer>
+
+	<div id="booking-overlay" class="booking-overlay"></div>
+
+	<div id="booking-confirmation" class="booking-card">
+		<h3>✅ Reserva confirmada</h3>
+		<p>
+			<strong>Restaurante:</strong>
+			<span id="res-restaurant"></span>
+		</p>
+		<p>
+			<strong>Nombre:</strong>
+			<span id="res-name"></span>
+		</p>
+		<p>
+			<strong>Fecha:</strong>
+			<span id="res-date"></span>
+		</p>
+		<p>
+			<strong>Hora:</strong>
+			<span id="res-time"></span>
+		</p>
+		<button id="close-booking">Cerrar</button>
+	</div>
+</body>
+
 </html>
