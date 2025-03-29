@@ -371,12 +371,16 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 const searchButton = document.querySelector(".nav-search-btn");
 const searchInput = document.getElementById("search");
 
+const form = document.getElementById("form");
+
 const formBookingContainer = document.getElementById("formContainerBooking");
-const restaurantNameSpan = document.getElementById("restaurant-name");
 const formBooking = document.getElementById("formBooking");
-const overlay = document.getElementById("overlay");
 const bookingCard = document.getElementById("booking-confirmation");
 const closeButton = document.getElementById("close-booking");
+
+const restaurantNameSpan = document.getElementById("restaurant-name");
+
+const overlay = document.getElementById("overlay");
 
 const toggleModeButton = document.getElementById("dark-mode-btn");
 const htmlElement = document.documentElement;
@@ -587,8 +591,15 @@ const displayFilteredRestaurants = (filteredRestaurants = []) => {
 	});
 };
 
-//formulario
+//usuarios formulario
 const saveUsers = () => localStorage.setItem("users", JSON.stringify(users));
+
+const loadUsers = () => {
+	const savedUsers = localStorage.getItem("users");
+	if (savedUsers) {
+		users = JSON.parse(savedUsers);
+	}
+};
 
 const deleteUser = (index) => {
 	users.splice(index, 1);
@@ -633,9 +644,9 @@ const renderUsers = () => {
 				deleteUser(index);
 			});
 
-            userInfo.append(nameSpan, emailSpan);
-            userCard.append(userInfo, deleteButton);
-            usersContainer.appendChild(userCard);
+			userInfo.append(nameSpan, emailSpan);
+			userCard.append(userInfo, deleteButton);
+			usersContainer.appendChild(userCard);
 		});
 
 		userListDiv.appendChild(usersContainer);
@@ -884,26 +895,21 @@ const setupEventListeners = () => {
 			filterByPrice(0, selectedPrice);
 		});
 
-	//Login
-	// document.getElementById("btn-login").addEventListener("click", () => {
-	// 	const email = prompt("Enter your email:");
-	// 	if (email) {
-	// 		const password = prompt("Enter your password");
-
-	// 		if (password) {
-	// 			console.log("Email", email);
-	// 			console.log("Password", password);
-	// 		} else {
-	// 			console.log("The password was not entered");
-	// 		}
-	// 	} else {
-	// 		console.log("The email was not entered");
-	// 	}
-	// });
-
 	//Formulario
-	const form = document.getElementById("form");
 	if (form) {
+		const savedFromData = localStorage.getItem("registrationFormData");
+		if (savedFromData) {
+			try {
+				const formData = JSON.parse(savedFromData);
+				document.getElementById("name").value = formData.name || "";
+				document.getElementById("email").value = formData.email || "";
+				document.getElementById("policy").checked = formData.policy || false;
+			} catch (e) {
+				console.error("Error al parsear datos del formulario:", e);
+				localStorage.removeItem("registrationFormData");
+			}
+		}
+
 		form.addEventListener("submit", (event) => {
 			event.preventDefault();
 
@@ -911,8 +917,18 @@ const setupEventListeners = () => {
 			const emailValue = document.getElementById("email").value;
 			const policyChecked = document.getElementById("policy").checked;
 
+			if (!nameValue || !emailValue) {
+				alert("Por favor complete todos los campos");
+				return;
+			}
+
 			if (!policyChecked) {
 				alert("Debes aceptar la política de Privacidad.");
+				return;
+			}
+
+			if (users.some((user) => user.email === emailValue)) {
+				alert("Este email ya está registrado");
 				return;
 			}
 
@@ -920,13 +936,26 @@ const setupEventListeners = () => {
 				id: Date.now(),
 				name: nameValue,
 				email: emailValue,
+				password: "",
 				policy: policyChecked,
 			};
 
 			users.push(user);
 			saveUsers();
+			localStorage.removeItem("registrationFormData");
 			form.reset();
 			renderUsers();
+
+			alert("¡Registro exitoso! Ahora puedes iniciar sesión");
+		});
+
+		form.addEventListener("input", () => {
+			const formData = {
+				name: document.getElementById("name").value,
+				email: document.getElementById("email").value,
+				policy: document.getElementById("policy").checked,
+			};
+			localStorage.setItem("registrationFormData", JSON.stringify(formData));
 		});
 	}
 
@@ -1034,21 +1063,6 @@ const setupEventListeners = () => {
 	});
 };
 
-// const searchAndFilter = (searchTerm) => {
-// 	if (!searchTerm.trim()) {
-// 		displayFilteredRestaurants([]); // Limpia resultados
-// 		return;
-// 	}
-
-// 	const filtered = restaurants.filter(
-// 		(r) =>
-// 			r.nombre.toLowerCase().startsWith(searchTerm) ||
-// 			r.localidad.toLowerCase().startsWith(searchTerm) ||
-// 			r.cocina.toLowerCase().startsWith(searchTerm)
-// 	);
-// 	displayFilteredRestaurants(filtered);
-// };
-
 //Busqueda
 const searchRestaurants = () => {
 	const searchTerm = searchInput.value.toLowerCase().trim();
@@ -1071,6 +1085,7 @@ const searchRestaurants = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	loadUsers();
 	loadTheme();
 	loadFavorites();
 	initializeSelectors();
@@ -1092,7 +1107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		displayFilteredRestaurants();
 	}
 
-	const isLogin = localStorage.getItem("loginOpen") === 'true';
+	const isLogin = localStorage.getItem("loginOpen") === "true";
 	if (isLogin) {
 		loginFormContainer.style.display = "flex";
 		overlay.style.display = "block";
@@ -1117,7 +1132,7 @@ btnLogin.addEventListener("click", (e) => {
 	loginFormContainer.style.display = isOpening ? "flex" : "none";
 	overlay.style.display = isOpening ? "block" : "none";
 
-	localStorage.setItem("loginOpen", isOpening.toString());//es un boolenno, no seria necesario JSON
+	localStorage.setItem("loginOpen", isOpening.toString()); //es un boolenno, no seria necesario JSON
 
 	if (isOpening) {
 		document.getElementById("email-login").focus();
@@ -1127,7 +1142,7 @@ btnLogin.addEventListener("click", (e) => {
 overlay.addEventListener("click", () => {
 	loginFormContainer.style.display = "none";
 	overlay.style.display = "none";
-	localStorage.setItem('loginOpen', 'false');//lo pasamos directamente como un string
+	localStorage.setItem("loginOpen", "false"); //lo pasamos directamente como un string
 });
 
 // Evitar que se cierre al hacer clic dentro del formulario(buena practica)
@@ -1144,11 +1159,11 @@ loginForm.addEventListener("submit", (e) => {
 	if (email && password) {
 		alert("¡Enjoy the gastronomy!");
 		loginFormContainer.style.display = "none";
-		overlay,style.display = "none";
-		localStorage.setItem('loginOpen', 'false');
-		
-		document.getElementById("email-login").value = '';
-		document.getElementById("password-login").value = '';
+		overlay, (style.display = "none");
+		localStorage.setItem("loginOpen", "false");
+
+		document.getElementById("email-login").value = "";
+		document.getElementById("password-login").value = "";
 	} else {
 		alert("Please enter both fields");
 	}
