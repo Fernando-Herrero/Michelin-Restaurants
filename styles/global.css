@@ -940,7 +940,7 @@ body {
 	cursor: pointer;
 }
 
-.booking-overlay {
+.overlay {
 	display: none;
 	position: fixed;
 	top: 0;

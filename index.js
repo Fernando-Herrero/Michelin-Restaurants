@@ -374,7 +374,7 @@ const searchInput = document.getElementById("search");
 const formBookingContainer = document.getElementById("formContainerBooking");
 const restaurantNameSpan = document.getElementById("restaurant-name");
 const formBooking = document.getElementById("formBooking");
-const overlay = document.getElementById("booking-overlay");
+const overlay = document.getElementById("overlay");
 const bookingCard = document.getElementById("booking-confirmation");
 const closeButton = document.getElementById("close-booking");
 
@@ -1095,30 +1095,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Login
-const btnLogin = document.getElementById('btn-login');
-const loginFormContainer = document.getElementById('login-form-container');
-const loginForm = document.getElementById('login-form');
+const btnLogin = document.getElementById("btn-login");
+const loginFormContainer = document.getElementById("login-form-container");
+const loginForm = document.getElementById("login-form");
 
+btnLogin.addEventListener("click", (e) => {
+	e.stopPropagation();
 
-btnLogin.addEventListener('click', () => {
-    loginFormContainer.style.display = 'flex'; // Mostrar el formulario de login
+	if (loginFormContainer.style.display === "flex") {
+		loginFormContainer.style.display = "none";
+		overlay.style.display = "none";
+	} else {
+		loginFormContainer.style.display = "flex";
+		overlay.style.display = "block";
+		document.getElementById('email-login').focus();
+	}
 });
 
+overlay.addEventListener("click", () => {
+	loginFormContainer.style.display = "none";
+	overlay.style.display = "none";
+});
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault(); 
+// Evitar que se cierre al hacer clic dentro del formulario(buena practica)
+loginFormContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
 
-    const email = document.getElementById('email-login').value;
-    const password = document.getElementById('password-login').value;
+loginForm.addEventListener("submit", (e) => {
+	e.preventDefault();
 
-    if (email && password) {
-        alert('¡Enjoy the gastronomy!');
-        console.log('Email:', email);
-        console.log('Password:', password);
+	const email = document.getElementById("email-login").value;
+	const password = document.getElementById("password-login").value;
 
-        // Ocultar el formulario
-        loginFormContainer.style.display = 'none';
-    } else {
-        alert('Please enter both fields');
-    }
+	if (email && password) {
+		alert("¡Enjoy the gastronomy!");
+		console.log("Email:", email);
+		console.log("Password:", password);
+
+		loginFormContainer.style.display = "none";
+	} else {
+		alert("Please enter both fields");
+	}
 });
