@@ -1,12 +1,11 @@
-@media (min-width: 481px) {
+@media (max-width: 481px) {
 	.container {
 		width: 100%;
-		max-width: 1200px; 
+		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 15px;
 	}
 
-	
 	.nav-bar-container {
 		display: flex;
 		flex-direction: row;
@@ -14,85 +13,156 @@
 	}
 
 	.nav-logo {
-		max-width: 150px; 
+		max-width: 100px;
 	}
 
 	.search-bar {
-		width: 40%;
+		display: none;
 	}
-
 
 	.nav-buttons {
 		display: flex;
 		flex-direction: row;
-		gap: 15px;
+		gap: 10px;
 	}
 
-	
+	#btn-login,
+	#btn-contact {
+		font-size: 12px;
+		padding: 6px 10px;
+	}
+
+	.btn-filters {
+		gap: 8px;
+	}
+
 	.container-cards {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr); 
-		gap: 25px;
-		padding: 25px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 12px;
+		padding: 12px;
+		scroll-margin-top: 220px;
 	}
 
 	.card-restaurant {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		background-color: var(--card-bg);
-		border: 1px solid var(--border-color);
-		border-radius: var(--border-radius);
-		box-shadow: var(--card-shadow);
-		transition: all var(--transition-normal);
-		overflow: hidden;
-		position: relative;
+		gap: 0;
 	}
 
+	.card-restaurant img {
+		height: 90px;
+	}
+
+	.card-info {
+		padding: 6px;
+	}
+
+	.card-div-info h3 {
+		font-size: 14px;
+	}
+
+	.card-div-info p {
+		font-size: 10px;
+		line-height: 1;
+	}
+
+	.favorite-btn,
+	.booking-btn {
+		padding: 4px 8px;
+		font-size: 10px;
+	}
+
+	.container-button a {
+		font-size: 10px;
+	}
+
+	.restaurant-title-anchor {
+		padding: 12px 8px 0 8px;
+	}
+
+	.img-title-restaurants {
+		gap: 8px;
+	}
+
+	.img-title-restaurants img {
+		width: 60px;
+	}
+
+	.img-title-restaurants h2 {
+		font-size: 20px;
+	}
+
+	.form-one-star-container {
+		flex-direction: column;
+	}
 
 	.form-container {
-		width: 90%;
+		padding: 20px;
 	}
 
+	.form-container h3 {
+		font-size: 24px;
+		margin-bottom: 0;
+	}
+
+	.form-section form {
+		gap: 12px;
+	}
+
+	.form-section input {
+		padding: 10px 12px;
+	}
+
+	.checkbox-group {
+		gap: 6px;
+		margin: 8px 0;
+	}
+
+	.checkbox-group label {
+		font-size: 14px;
+	}
+
+	.checkbox-group input[type="checkbox"] {
+		width: 14px;
+		height: 14px;
+	}
+
+	.submit-btn {
+		padding: 10px 16px;
+		margin-top: 0;
+	}
 
 	.one-star-images {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto;
 	}
-
-	
-	.search {
-		width: 100%;
-		font-size: 16px;
-	}
-
-	
-	#btn-login,
-	#btn-contact,
-	.reset-btn {
-		width: 100%;
-		padding: 12px;
-	}
-
-
-	#btn-login,
-	#btn-contact {
-		font-size: 14px;
-		padding: 10px 15px;
-	}
 }
 
-
-
-
-@media (min-width: 1024px) {
-	.container {
-		width: 100%;
-		max-width: 1300px; 
-		margin: 0 auto; 
-		padding: 0 20px;
+@media (min-width: 481px) and (max-width: 700px) {
+	.search-bar {
+		display: none;
 	}
 
+	.container-cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 12px;
+		padding: 12px;
+		scroll-margin-top: 220px;
+	}
+
+	.form-one-star-container {
+		flex-direction: column;
+	}
+
+}
+
+@media (min-width: 701) and (max-width: 1024px) {
+	.container {
+		width: 100%;
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
 
 	.nav-bar-container {
 		display: flex;
@@ -101,25 +171,35 @@
 	}
 
 	.nav-logo {
-		max-width: 180px; 
+		max-width: 180px;
 	}
 
 	.search-bar {
-		width: 30%; 
+		display: flex;
+		width: 30%;
 	}
 
+	.search {
+		width: 100%;
+		font-size: 16px;
+	}
 
 	.nav-buttons {
 		display: flex;
 		flex-direction: row;
-		gap: 25px; 
+		gap: 25px;
 	}
 
+	#btn-login,
+	#btn-contact {
+		font-size: 14px;
+		padding: 10px 15px;
+	}
 
 	.container-cards {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr); 
-		gap: 30px; 
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
 		padding: 30px;
 	}
 
@@ -132,30 +212,5 @@
 		border-radius: var(--border-radius);
 		box-shadow: var(--card-shadow);
 		transition: all var(--transition);
-    }
-}
-
-
-    
-@media (min-width: 1440px) {
-
-	
-	.container {
-		width: 100%;
-		max-width: 1400px; 
-		margin: 0 auto; 
-		padding: 0 30px;
 	}
-
-	
-	.nav-bar-container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 20px 0;
-	}
-
-	.nav-logo {
-		max-width: 220px;
-    }
 }

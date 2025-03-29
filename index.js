@@ -648,8 +648,7 @@ const getVisibleRestaurantCount = () => {
 	if (screenWidth >= 1300) return 5;
 	if (screenWidth >= 1100) return 4;
 	if (screenWidth >= 840) return 3;
-	if (screenWidth >= 550) return 2;
-	return 1;
+	return 2;
 };
 
 const displayInitialRestaurants = () => {
