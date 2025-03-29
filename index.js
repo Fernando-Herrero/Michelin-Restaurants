@@ -917,6 +917,11 @@ const setupEventListeners = () => {
 			const emailValue = document.getElementById("email").value;
 			const policyChecked = document.getElementById("policy").checked;
 
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+				alert("Por favor ingrese un email válido");
+				return;
+			}
+
 			if (!nameValue || !emailValue) {
 				alert("Por favor complete todos los campos");
 				return;
@@ -936,7 +941,7 @@ const setupEventListeners = () => {
 				id: Date.now(),
 				name: nameValue,
 				email: emailValue,
-				password: "",
+				password: '',
 				policy: policyChecked,
 			};
 
@@ -1157,9 +1162,17 @@ loginForm.addEventListener("submit", (e) => {
 	const password = document.getElementById("password-login").value;
 
 	if (email && password) {
+
+		const registeredUser = users.find(user => user.email.toLowerCase().trim() === email.toLowerCase().trim());
+
+		if (!registeredUser) {
+			alert("Usuario no registrado. Por favor regístrese primero.");
+			return;
+		}
+
 		alert("¡Enjoy the gastronomy!");
 		loginFormContainer.style.display = "none";
-		overlay, (style.display = "none");
+		overlay.style.display = "none";
 		localStorage.setItem("loginOpen", "false");
 
 		document.getElementById("email-login").value = "";
