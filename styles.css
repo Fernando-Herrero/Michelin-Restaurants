@@ -1044,3 +1044,47 @@ body {
 	transform: translateY(-2px);
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* Estilo para el formulario de login */
+.login-form-container {
+    display: none; 
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.login-form input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.login-form button {
+    padding: 10px 20px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
