@@ -32,6 +32,10 @@
 		padding: 6px 10px;
 	}
 
+	.filters-container {
+		padding: 0;
+	}
+
 	.btn-filters {
 		gap: 8px;
 	}
@@ -137,9 +141,17 @@
 	}
 }
 
-@media (min-width: 481px) and (max-width: 700px) {
+@media (min-width: 481px) and (max-width: 740px) {
+	.nav-bar-container {
+		padding: 0;
+	}
+
 	.search-bar {
 		display: none;
+	}
+
+	.filters-container {
+		padding: 0;
 	}
 
 	.container-cards {
@@ -153,64 +165,36 @@
 	.form-one-star-container {
 		flex-direction: column;
 	}
-
 }
 
-@media (min-width: 701) and (max-width: 1024px) {
-	.container {
-		width: 100%;
-		max-width: 1300px;
-		margin: 0 auto;
-		padding: 0 20px;
-	}
+@media (min-width: 741px) and (max-width: 1024px) {
 
 	.nav-bar-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		padding: 0;
 	}
 
-	.nav-logo {
-		max-width: 180px;
-	}
-
-	.search-bar {
-		display: flex;
-		width: 30%;
-	}
-
-	.search {
-		width: 100%;
-		font-size: 16px;
-	}
-
-	.nav-buttons {
-		display: flex;
-		flex-direction: row;
-		gap: 25px;
-	}
-
-	#btn-login,
-	#btn-contact {
-		font-size: 14px;
-		padding: 10px 15px;
+	.filters-container {
+		padding: 0;
 	}
 
 	.container-cards {
-		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 30px;
-		padding: 30px;
 	}
 
-	.card-restaurant {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		background-color: var(--card-bg);
-		border: 1px solid var(--border-color);
-		border-radius: var(--border-radius);
-		box-shadow: var(--card-shadow);
-		transition: all var(--transition);
+	.card-restaurant img {
+		height: 100px;
+	}
+
+	.form-container {
+		flex: 1;
+		gap: 20px;
+		padding: 16px;
+	}
+
+	.submit-btn {
+		margin-top: 0;
 	}
 }

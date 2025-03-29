@@ -452,19 +452,6 @@ const createContainerButton = (restaurant) => {
 	bookingBtn.classList.add("booking-btn");
 	bookingBtn.dataset.restaurant = restaurant.nombre;
 
-	// // Envío del formulario de reservas
-	// document.getElementById("submitBtn").addEventListener("click", () => {
-	// 	const name = document.getElementById("name").value;
-	// 	const date = document.getElementById("date").value;
-	// 	const time = document.getElementById("time").value;
-
-	// 	// Validar los campos del formulario
-	// 	if (!name || !date || !time) {
-	// 		alert("Please, complete all fields");
-	// 		return;
-	// 	}
-	// });
-
 	const aLinkWebsite = document.createElement("a");
 	aLinkWebsite.classList.add("website-button");
 	aLinkWebsite.href = restaurant.url;
@@ -614,28 +601,44 @@ const renderUsers = () => {
 	userListDiv.innerHTML = "";
 
 	if (users.length > 0) {
-		const ul = document.createElement("ul");
-		ul.classList.add("users-box");
+		const usersContainer = document.createElement("div");
+		usersContainer.classList.add("users-box");
 
 		users.forEach((user, index) => {
-			const li = document.createElement("li");
-			li.classList.add("user-card");
-			li.textContent = `Name: ${user.name}, \nEmail: ${user.email}`;
+			const userCard = document.createElement("div");
+			userCard.classList.add("user-card");
+
+			const userInfo = document.createElement("div");
+			userInfo.classList.add("user-info");
+
+			const nameSpan = document.createElement("span");
+			nameSpan.classList.add("user-name");
+			nameSpan.textContent = user.name;
+
+			const emailSpan = document.createElement("span");
+			emailSpan.classList.add("user-email");
+			emailSpan.textContent = user.email;
 
 			const deleteButton = document.createElement("button");
-			deleteButton.textContent = "X";
-			deleteButton.style.backgroundColor = "red";
-			deleteButton.style.borderRadius = "100%";
+			deleteButton.classList.add("user-delete-btn");
+
+			deleteButton.innerHTML = `
+                <svg aria-hidden="true" class="user-delete-icon" viewBox="0 0 24 24">
+                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                <span class="sr-only">Eliminar usuario</span>
+            `;
 
 			deleteButton.addEventListener("click", () => {
 				deleteUser(index);
 			});
 
-			li.appendChild(deleteButton);
-			ul.appendChild(li);
+            userInfo.append(nameSpan, emailSpan);
+            userCard.append(userInfo, deleteButton);
+            usersContainer.appendChild(userCard);
 		});
 
-		userListDiv.appendChild(ul);
+		userListDiv.appendChild(usersContainer);
 	} else {
 		userListDiv.textContent = "No users registered.";
 	}
@@ -645,9 +648,9 @@ const getVisibleRestaurantCount = () => {
 	const screenWidth = window.innerWidth;
 
 	if (screenWidth >= 1550) return 6;
-	if (screenWidth >= 1300) return 5;
-	if (screenWidth >= 1100) return 4;
-	if (screenWidth >= 840) return 3;
+	if (screenWidth >= 1345) return 5;
+	if (screenWidth >= 1080) return 4;
+	if (screenWidth >= 740) return 3;
 	return 2;
 };
 
@@ -1108,7 +1111,7 @@ btnLogin.addEventListener("click", (e) => {
 	} else {
 		loginFormContainer.style.display = "flex";
 		overlay.style.display = "block";
-		document.getElementById('email-login').focus();
+		document.getElementById("email-login").focus();
 	}
 });
 
@@ -1119,7 +1122,7 @@ overlay.addEventListener("click", () => {
 
 // Evitar que se cierre al hacer clic dentro del formulario(buena practica)
 loginFormContainer.addEventListener("click", (e) => {
-    e.stopPropagation();
+	e.stopPropagation();
 });
 
 loginForm.addEventListener("submit", (e) => {

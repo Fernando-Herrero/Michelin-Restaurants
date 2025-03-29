@@ -121,7 +121,7 @@ body {
 	top: 0;
 	z-index: 1000;
 	backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-bar-container {
@@ -171,7 +171,7 @@ body {
 	background-size: 16px;
 	transition: all var(--transition-normal);
 	backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 .search:focus {
@@ -229,7 +229,7 @@ body {
 	border: 1px solid var(--border-color);
 	color: var(--text-color);
 	backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 #btn-contact a {
@@ -747,7 +747,7 @@ body {
 	border-radius: 8px;
 	transition: all var(--transition-normal);
 	box-shadow: var(--card-shadow);
-	filter: brightness(0.80);
+	filter: brightness(0.8);
 }
 
 .one-star-images img:hover {
@@ -827,32 +827,90 @@ body {
 }
 
 /* ===== LISTA DE USUARIOS ===== */
-.user-list {
-	padding: 30px 0;
-	background-color: var(--bg-color);
-}
-
 .users-box {
 	display: flex;
-	gap: 5px;
 	flex-direction: column;
+	gap: 12px;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 15px;
 }
 
 .user-card {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px 5px;
-	border: 1px solid var(--success-color);
-	border-radius: var(--border-radius);
-	box-shadow: 3px 3px 5px var(--shadow-color);
-	white-space: pre-line;
+	padding: 16px 20px;
 	background-color: var(--card-bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--card-shadow);
+	border: 1px solid var(--border-color);
+	transition: all var(--transition-normal);
 }
 
-#user-list {
-	padding: 30px 10px;
-	background-color: var(--bg-color);
+.user-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.user-info {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	flex: 1;
+	padding-right: 15px;
+}
+
+.user-name {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--text-color);
+	line-height: 1.3;
+}
+
+.user-email {
+	font-size: 0.85rem;
+	color: var(--text-light-color);
+	word-break: break-all;
+}
+
+.user-delete-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background-color: var(--danger-color);
+	color: white;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+	flex-shrink: 0;
+}
+
+.user-delete-btn:hover {
+	background-color: var(--danger-hover);
+	transform: scale(1.1);
+}
+
+.user-delete-btn:active {
+	transform: scale(0.95);
+}
+
+.user-delete-icon {
+	width: 18px;
+	height: 18px;
+	fill: currentColor;
+}
+
+#user-list:empty::before {
+	content: "No users registered.";
+	color: var(--text-light-color);
+	text-align: center;
+	display: block;
+	padding: 20px;
 }
 
 /* ===== RESERVA ===== */
@@ -870,7 +928,8 @@ body {
 	box-shadow: var(--card-shadow);
 }
 
-.form-booking h4, .form-booking input {
+.form-booking h4,
+.form-booking input {
 	margin-bottom: 6px;
 }
 
@@ -1038,56 +1097,68 @@ body {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+[data-theme="dark"] .user-card {
+	border-color: var(--border-color);
+}
+
+[data-theme="dark"] .user-delete-btn {
+	background-color: var(--danger-color);
+}
+
+[data-theme="dark"] .user-delete-btn:hover {
+	background-color: var(--danger-hover);
+}
+
 /* Estilo para el formulario de login */
 .login-form-container {
-    display: none; 
-    position: fixed; /* Cambia de absolute a fixed */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado perfecto */
-    background-color: var(--card-bg);
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    width: min(490px, 90vw); /* Se adapta al ancho de pantalla */
-    max-height: 90vh; /* Máximo 90% del alto de pantalla */
-    overflow-y: auto; /* Scroll si el contenido es muy largo */
-    text-align: center;
-    z-index: 20000;
+	display: none;
+	position: fixed; /* Cambia de absolute a fixed */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Centrado perfecto */
+	background-color: var(--card-bg);
+	padding: 40px;
+	border-radius: var(--border-radius);
+	box-shadow: var(--card-shadow);
+	width: min(490px, 90vw); /* Se adapta al ancho de pantalla */
+	max-height: 90vh; /* Máximo 90% del alto de pantalla */
+	overflow-y: auto; /* Scroll si el contenido es muy largo */
+	text-align: center;
+	z-index: 20000;
 }
 
 .login-form h2 {
-    margin-bottom: 20px;
-    color: var(--text-color);
+	margin-bottom: 20px;
+	color: var(--text-color);
 }
 
 .login-form label {
-    display: block;
-    margin: 10px 0 5px;
-    color: var(--text-color);
+	display: block;
+	margin: 10px 0 5px;
+	color: var(--text-color);
 }
 
 .login-form input {
-    padding: 10px;
-    width: 100%;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    margin-bottom: 10px;
-    font-size: 1em;
-    background-color: var(--input-bg);
-    color: var(--text-color);
+	padding: 10px;
+	width: 100%;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+	margin-bottom: 10px;
+	font-size: 1em;
+	background-color: var(--input-bg);
+	color: var(--text-color);
 }
 
 .login-form button {
-    padding: 16px 24px;
-    background-color: var(--success-color);
-    color: var(--bg-color);
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: background-color var(--transition-normal);
+	padding: 16px 24px;
+	background-color: var(--success-color);
+	color: var(--bg-color);
+	border: none;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: background-color var(--transition-normal);
 }
 
 .login-form button:hover {
-    background-color: var(--success-hover);
+	background-color: var(--success-hover);
 }
