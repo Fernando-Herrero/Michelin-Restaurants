@@ -1,0 +1,161 @@
+@media (min-width: 481px) {
+	.container {
+		width: 100%;
+		max-width: 1200px; 
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+	
+	.nav-bar-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.nav-logo {
+		max-width: 150px; 
+	}
+
+	.search-bar {
+		width: 40%;
+	}
+
+
+	.nav-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 15px;
+	}
+
+	
+	.container-cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr); 
+		gap: 25px;
+		padding: 25px;
+	}
+
+	.card-restaurant {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		background-color: var(--card-bg);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius);
+		box-shadow: var(--card-shadow);
+		transition: all var(--transition-normal);
+		overflow: hidden;
+		position: relative;
+	}
+
+
+	.form-container {
+		width: 90%;
+	}
+
+
+	.one-star-images {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto;
+	}
+
+	
+	.search {
+		width: 100%;
+		font-size: 16px;
+	}
+
+	
+	#btn-login,
+	#btn-contact,
+	.reset-btn {
+		width: 100%;
+		padding: 12px;
+	}
+
+
+	#btn-login,
+	#btn-contact {
+		font-size: 14px;
+		padding: 10px 15px;
+	}
+}
+
+
+
+
+@media (min-width: 1024px) {
+	.container {
+		width: 100%;
+		max-width: 1300px; 
+		margin: 0 auto; 
+		padding: 0 20px;
+	}
+
+
+	.nav-bar-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.nav-logo {
+		max-width: 180px; 
+	}
+
+	.search-bar {
+		width: 30%; 
+	}
+
+
+	.nav-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 25px; 
+	}
+
+
+	.container-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr); 
+		gap: 30px; 
+		padding: 30px;
+	}
+
+	.card-restaurant {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		background-color: var(--card-bg);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius);
+		box-shadow: var(--card-shadow);
+		transition: all var(--transition);
+    }
+}
+
+
+    
+@media (min-width: 1440px) {
+
+	
+	.container {
+		width: 100%;
+		max-width: 1400px; 
+		margin: 0 auto; 
+		padding: 0 30px;
+	}
+
+	
+	.nav-bar-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0;
+	}
+
+	.nav-logo {
+		max-width: 220px;
+    }
+}
