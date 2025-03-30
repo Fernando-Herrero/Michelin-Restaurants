@@ -1196,3 +1196,19 @@ loginForm.addEventListener("submit", (e) => {
 
 	btnLogin.textContent = registeredUser.email;
 });
+
+//Cerrar sesion 
+btnLogin.addEventListener("dblclick", () => {
+	cerrarSesion();
+});
+
+const cerrarSesion = () => {
+
+	btnLogin.textContent = "Login";
+
+	localStorage.removeItem("userName");
+	localStorage.removeItem("userEmail");
+	localStorage.removeItem("displayName");
+
+	alert("Sesion cerrada correctamente");
+};
