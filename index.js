@@ -941,17 +941,19 @@ const setupEventListeners = () => {
 				id: Date.now(),
 				name: nameValue,
 				email: emailValue,
-				password: '',
+				password: "",
 				policy: policyChecked,
 			};
 
 			users.push(user);
 			saveUsers();
-			localStorage.removeItem("registrationFormData");
 			form.reset();
 			renderUsers();
 
 			alert("¡Registro exitoso! Ahora puedes iniciar sesión");
+
+			localStorage.removeItem("registrationFormData");
+			localStorage.removeItem("loginFormData");
 		});
 
 		form.addEventListener("input", () => {
@@ -1119,6 +1121,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.getElementById("email-login").focus();
 	}
 
+	const savedName = localStorage.getItem("displayName");
+	if (savedName) btnLogin.textContent = savedName;
+
 	updateFavoritos();
 	displayInitialRestaurants();
 	displayFilteredRestaurants();
@@ -1162,8 +1167,9 @@ loginForm.addEventListener("submit", (e) => {
 	const password = document.getElementById("password-login").value;
 
 	if (email && password) {
-
-		const registeredUser = users.find(user => user.email.toLowerCase().trim() === email.toLowerCase().trim());
+		const registeredUser = users.find(
+			(user) => user.email.toLowerCase().trim() === email.toLowerCase().trim()
+		);
 
 		if (!registeredUser) {
 			alert("Usuario no registrado. Por favor regístrese primero.");
@@ -1177,7 +1183,16 @@ loginForm.addEventListener("submit", (e) => {
 
 		document.getElementById("email-login").value = "";
 		document.getElementById("password-login").value = "";
+
+		const displayName = registeredUser.name || registeredUser.email;
+		btnLogin.textContent = displayName;
+
+		localStorage.setItem("userName", registeredUser.name || "");
+		localStorage.setItem("userEmail", registeredUser.email);
+		localStorage.setItem("displayName", displayName);
 	} else {
 		alert("Please enter both fields");
 	}
+
+	btnLogin.textContent = registeredUser.email;
 });
