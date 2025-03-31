@@ -826,6 +826,38 @@ const loadTheme = () => {
 	}
 };
 
+const saveDataBooking = () => {
+	const formBookingData = {
+		name: document.getElementById("client-name").value,
+		date: document.getElementById("booking-date").value,
+		time: document.getElementById("booking-time").value,
+		restaurant: document.getElementById("restaurant-name").textContent.trim(),
+		isFormOpen: formBookingContainer.style.display === "flex",
+	};
+	localStorage.setItem("formBookingData", JSON.stringify(formBookingData));
+};
+
+const loadFormData = () => {
+	const savedData = localStorage.getItem("formBookingData");
+
+	if (savedData) {
+		const formData = JSON.parse(savedData);
+
+		document.getElementById("client-name").value = formData.name || "";
+		document.getElementById("booking-date").value = formData.date || "";
+		document.getElementById("booking-time").value = formData.time || "";
+
+		if (formData.restaurant) {
+			document.getElementById("restaurant-name").textContent =
+				formData.restaurant;
+		}
+
+		if (formData.isFormOpen) {
+			formBookingContainer.style.display = "flex";
+		}
+	}
+};
+
 const setupEventListeners = () => {
 	searchInput.addEventListener("input", searchRestaurants);
 
@@ -1041,12 +1073,25 @@ const setupEventListeners = () => {
 			restaurantNameSpan.textContent = restaurantName;
 			formBookingContainer.style.display = "flex";
 			formBookingContainer.scrollIntoView();
+			saveDataBooking();
 		}
 	});
+
+	document
+		.getElementById("client-name")
+		.addEventListener("input", saveDataBooking);
+	document
+		.getElementById("booking-date")
+		.addEventListener("change", saveDataBooking);
+	document
+		.getElementById("booking-time")
+		.addEventListener("change", saveDataBooking);
 
 	// Submit del formulario
 	formBooking.addEventListener("submit", (e) => {
 		e.preventDefault();
+
+		saveDataBooking();
 
 		const nombre = document.getElementById("client-name").value;
 		const fecha = document.getElementById("booking-date").value;
@@ -1061,12 +1106,25 @@ const setupEventListeners = () => {
 		overlay.style.display = "block";
 		bookingCard.style.display = "block";
 		document.body.style.overflow = "hidden";
+
+		const bookingData = {
+			name: nombre,
+			date: fecha,
+			time: hora,
+			restaurant: restaurante,
+		};
+
+		localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
+		formBooking.reset();
+		localStorage.removeItem("formBookingData");
 	});
 
 	closeButton.addEventListener("click", () => {
 		overlay.style.display = "none";
 		bookingCard.style.display = "none";
 		document.body.style.overflow = "auto";
+		formBookingContainer.style.display = "none";
 	});
 };
 
@@ -1098,6 +1156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initializeSelectors();
 	renderUsers();
 	setupEventListeners();
+	loadFormData();
 
 	const saveSearch = localStorage.getItem("lastSearch");
 	if (saveSearch) {
@@ -1123,6 +1182,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const savedName = localStorage.getItem("displayName");
 	if (savedName) btnLogin.textContent = savedName;
+
+	const savedData = localStorage.getItem("formBookingData");
+
+	if (savedData) {
+		const formData = JSON.parse(savedData);
+
+		document.getElementById("client-name").value = formData.name || "";
+		document.getElementById("booking-date").value = formData.date || "";
+		document.getElementById("booking-time").value = formData.time || "";
+
+		if (formData.restaurant) {
+			document.getElementById("restaurant-name").textContent =
+				formData.restaurant;
+		}
+	}
 
 	updateFavoritos();
 	displayInitialRestaurants();
@@ -1197,13 +1271,12 @@ loginForm.addEventListener("submit", (e) => {
 	btnLogin.textContent = registeredUser.email;
 });
 
-//Cerrar sesion 
+//Cerrar sesion
 btnLogin.addEventListener("dblclick", () => {
 	cerrarSesion();
 });
 
 const cerrarSesion = () => {
-
 	btnLogin.textContent = "Login";
 
 	localStorage.removeItem("userName");
