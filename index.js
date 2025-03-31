@@ -1120,6 +1120,12 @@ const setupEventListeners = () => {
 		localStorage.removeItem("formBookingData");
 	});
 
+	document
+		.getElementById("close-container-booking")
+		.addEventListener("click", () => {
+			formBookingContainer.style, (display = "none");
+		});
+
 	closeButton.addEventListener("click", () => {
 		overlay.style.display = "none";
 		bookingCard.style.display = "none";
