@@ -1122,8 +1122,9 @@ const setupEventListeners = () => {
 
 	document
 		.getElementById("close-container-booking")
-		.addEventListener("click", () => {
-			formBookingContainer.style, (display = "none");
+		.addEventListener("click", (e) => {
+			e.preventDefault();
+			formBookingContainer.style.display = "none";
 		});
 
 	closeButton.addEventListener("click", () => {
